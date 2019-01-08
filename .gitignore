@@ -1,0 +1,26 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+/packages
+/.vs
+/Weilog.Core/obj/Release
+/Weilog.Data/obj/Release
+/Weilog.Entities/obj/Release
+/Weilog.Services/obj/Release
+/Weilog.Web/obj/Release
+/Weilog.Web.Framework/obj/Release
+/Weilog.Repositories/obj/Release
+/Weilog.Data/bin/
+/Weilog.Web/bin/
+/Weilog.Services/bin/
+/Weilog.Entities/bin/
+/Weilog.Core/bin/
+/Weilog.Repositories/bin/
+/Weilog.Web.Framework/bin/
+/Weilog.Data/obj/
+/Weilog.Web/obj/
+/Weilog.Services/obj/
+/Weilog.Entities/obj/
+/Weilog.Core/obj/
+/Weilog.Repositories/obj/
+/Weilog.Web.Framework/obj/
