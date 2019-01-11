@@ -20,6 +20,20 @@
         </p>
     }
 </div>
+<div>
+    @foreach (var item in ViewData["users2"] as List<User>)
+    {
+        <p>
+            <span class="is-leaf"> @item.Id </span>
+        </p>
+        <p>
+            <span class="is-leaf"> @item.Name </span>
+        </p>
+        <p>
+            <span class="is-leaf"> @item.Password </span>
+        </p>
+    }
+</div>
 @*</tbody>
     </table>*@
 

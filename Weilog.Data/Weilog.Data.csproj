@@ -84,11 +84,11 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Uow.Core\Weilog.Core.csproj">
-      <Project>{39B6DC2E-D525-48B8-AD03-D09F9D969F03}</Project>
+    <ProjectReference Include="..\Weilog.Core\Weilog.Core.csproj">
+      <Project>{39b6dc2e-d525-48b8-ad03-d09f9d969f03}</Project>
       <Name>Weilog.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Uow.Entities\Weilog.Entities.csproj">
+    <ProjectReference Include="..\Weilog.Entities\Weilog.Entities.csproj">
       <Project>{71EA33A7-B53E-4558-A5F1-8EB22AB86C46}</Project>
       <Name>Weilog.Entities</Name>
     </ProjectReference>

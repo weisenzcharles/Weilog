@@ -18,7 +18,7 @@ using Weilog.Data.Uow;
 using Weilog.Entities;
 using Weilog.Repositories;
 using Weilog.Services;
-
+using System.Data.SQLite;
 namespace Weilog.Web.Framework
 {
     /// <summary>
@@ -26,7 +26,6 @@ namespace Weilog.Web.Framework
     /// </summary>
     public class DependencyRegistrar : IDependencyRegistrar
     {
-
 
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
@@ -47,8 +46,12 @@ namespace Weilog.Web.Framework
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 
             // DbContext
-            builder.RegisterType<SQLiteDbContext>().As<IDataContextAsync>().InstancePerLifetimeScope();
-
+            //builder.RegisterType<SQLiteDbContext>().As<IDataContextAsync>().InstancePerLifetimeScope();
+            //builder.Register(context => new SQLiteDbContext(context.Resolve <SQLiteConnection("data source=:memory:")> ()))
+            //.As<IDataContext>().InstancePerLifetimeScope();
+            //builder.Register(context => new SQLiteDbContext(new SQLiteConnection("data source=:memory:"), false)).As<IDataContextAsync>().InstancePerLifetimeScope();
+            builder.Register<IDataContextAsync>(c => new SQLiteDbContext("uow")).InstancePerLifetimeScope();
+            //builder.Register(c => (new SQLiteDbContext(""))
             // UnitOfWork
             builder.RegisterType<UnitOfWork>().As<IUnitOfWorkAsync>().InstancePerLifetimeScope();
 

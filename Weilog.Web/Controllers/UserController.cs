@@ -14,10 +14,11 @@ namespace Weilog.Web.Controllers
     {
         private readonly IUnitOfWorkAsync _unitOfWork;
         private readonly IUserService _userService;
-
-        public UserController(IUnitOfWorkAsync unitOfWork,IUserService userService)
+        private readonly IRepositoryAsync<User> _repository;
+        public UserController(IUnitOfWorkAsync unitOfWork, IUserService userService, IRepositoryAsync<User> userRepository)
         {
             _unitOfWork = unitOfWork;
+            _repository = userRepository;
             _userService = userService;
         }
 
@@ -27,7 +28,10 @@ namespace Weilog.Web.Controllers
         {
             IList<User> users = new List<User>();
             users = _userService.GetUsers();
+            List<User> users2 = new List<User>();
+            users2 = _repository.Queryable(false).ToList();
             ViewData["users"] = users;
+            ViewData["users2"] = users2;
             return View();
         }
 

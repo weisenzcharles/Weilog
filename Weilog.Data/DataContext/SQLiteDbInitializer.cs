@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weilog.Core.Domain.Entities;
+using Weilog.Core.Infrastructure;
 
 namespace Weilog.Data.DataContext
 {
     public class SQLiteDbInitializer : SqliteDropCreateDatabaseWhenModelChanges<SQLiteDbContext>
     {
         public SQLiteDbInitializer(DbModelBuilder modelBuilder)
-          : base(modelBuilder, typeof(IEntity))
+          : base(modelBuilder, typeof(IObjectState))
         { }
 
         protected override void Seed(SQLiteDbContext context)

@@ -34,22 +34,27 @@ namespace Weilog.Data.DataContext
         public DataContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
             _instanceId = Guid.NewGuid();
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
+            Configure();
         }
 
         /// <summary>
-        /// 通过现有连接来连接到数据库以构造一个新的上下文实例。如果 contextOwnsConnection 是 false，则释放上下文时将不会释放该连接。
+        /// 通过现有连接来连接到数据库以构造一个新的上下文实例。
+        /// 如果 contextOwnsConnection 是 false，则释放上下文时将不会释放该连接。
         /// </summary>
         /// <param name="existingConnection">要用于新的上下文的现有连接。</param>
         /// <param name="contextOwnsConnection">如果设置为 true，则释放上下文时将释放该连接；否则调用方必须释放该连接。</param>
         public DataContext(DbConnection nameOrConnectionString, bool contextOwnsConnection) : base(nameOrConnectionString, contextOwnsConnection)
         {
+            _instanceId = Guid.NewGuid();
             Configure();
         }
 
+        /// <summary>
+        /// 配置数据库访问设置。
+        /// </summary>
         private void Configure()
         {
+
             Configuration.ProxyCreationEnabled = true;
             Configuration.LazyLoadingEnabled = true;
         }
@@ -130,7 +135,7 @@ namespace Weilog.Data.DataContext
         ///     objects written to the underlying database.</returns>
         public override async Task<int> SaveChangesAsync()
         {
-            return await this.SaveChangesAsync(CancellationToken.None);
+            return await SaveChangesAsync(CancellationToken.None);
         }
         /// <summary>
         ///     Asynchronously saves all changes made in this context to the underlying database.
