@@ -26,6 +26,16 @@ namespace Weilog.Core.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
+        /// 创建日期
+        /// </summary>
+        public DateTime CreatedTime { get; set; }
+
+        /// <summary>
+        /// 是否删除
+        /// </summary>
+        public bool Deleted { get; set; }
+
+        /// <summary>
         /// 获取或设置实体对象的状态。
         /// </summary>
         [NotMapped]

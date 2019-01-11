@@ -7,8 +7,8 @@
     <ProjectGuid>{1E3C93D5-1E26-48EA-AD55-017A1D1B779E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Uow.Repositories</RootNamespace>
-    <AssemblyName>Uow.Repositories</AssemblyName>
+    <RootNamespace>Weilog.Repositories</RootNamespace>
+    <AssemblyName>Weilog.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

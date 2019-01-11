@@ -7,8 +7,8 @@
     <ProjectGuid>{D3798EF7-14AB-4BBD-AB56-64365EAAC144}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Uow.Data</RootNamespace>
-    <AssemblyName>Uow.Data</AssemblyName>
+    <RootNamespace>Weilog.Data</RootNamespace>
+    <AssemblyName>Weilog.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

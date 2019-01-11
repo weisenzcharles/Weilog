@@ -7,8 +7,8 @@
     <ProjectGuid>{39B6DC2E-D525-48B8-AD03-D09F9D969F03}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Uow.Core</RootNamespace>
-    <AssemblyName>Uow.Core</AssemblyName>
+    <RootNamespace>Weilog.Core</RootNamespace>
+    <AssemblyName>Weilog.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

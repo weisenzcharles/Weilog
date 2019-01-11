@@ -7,8 +7,8 @@
     <ProjectGuid>{32853F5E-C599-4E6C-9DD0-C0A13D5CFFCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Uow.Web.Framework</RootNamespace>
-    <AssemblyName>Uow.Web.Framework</AssemblyName>
+    <RootNamespace>Weilog.Web.Framework</RootNamespace>
+    <AssemblyName>Weilog.Web.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
