@@ -42,7 +42,7 @@ namespace Weilog.Web.Controllers
         public ActionResult Add()
         {
             User user = new User();
-            user.Name = "user" + DateTime.Now.Millisecond;
+            user.Username = "user" + DateTime.Now.Millisecond;
             user.Password = "password" + DateTime.Now.Millisecond;
             _userService.Add(user);
             _unitOfWork.SaveChanges();
@@ -57,7 +57,7 @@ namespace Weilog.Web.Controllers
         {
             User user = new User();
             user.Id = 1;
-            user.Name = "user" + DateTime.Now.Millisecond;
+            user.Username = "user" + DateTime.Now.Millisecond;
             user.Password = "password" + DateTime.Now.Millisecond;
             var userRepository = _unitOfWork.RepositoryAsync<User>();
             userRepository.Update(user);

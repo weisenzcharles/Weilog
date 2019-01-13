@@ -18,23 +18,23 @@ namespace Weilog.Entities
         public int ParentId { get; set; }
 
         /// <summary>
-        /// 类型
+        /// 类型。
         /// </summary>
         public byte Type { get; set; }
 
         /// <summary>
-        /// 名称
+        /// 名称。
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// URL
+        /// Url。
         /// </summary>
         public string Url { get; set; }
 
         /// <summary>
-        /// 排序越大越靠后
+        /// 排序索引。
         /// </summary>
-        public int Order { get; set; }
+        public int OrderIndex { get; set; }
     }
 }

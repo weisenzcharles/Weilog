@@ -18,6 +18,19 @@ namespace Weilog.Core.Domain.Entities
 
         #endregion
 
+        #region Fields...
+
+        /// <summary>
+        /// 初始化 <seealso cref="EntityBase"/> 类的新实例。
+        /// </summary>
+        public EntityBase()
+        {
+            Deleted = false;
+            CreatedTime = DateTime.Now;
+        }
+
+        #endregion
+
         #region Properties...
 
         /// <summary>
@@ -26,12 +39,12 @@ namespace Weilog.Core.Domain.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// 创建日期
+        /// 创建时间。
         /// </summary>
         public DateTime CreatedTime { get; set; }
 
         /// <summary>
-        /// 是否删除
+        /// 是否删除。
         /// </summary>
         public bool Deleted { get; set; }
 

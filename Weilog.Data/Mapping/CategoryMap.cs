@@ -8,20 +8,20 @@ using Weilog.Entities;
 
 namespace Weilog.Data.Mapping
 {
-    public class UserMap: EntityTypeConfiguration<User>
+    /// <summary>
+    /// 分类实体数据映射配置。
+    /// </summary>
+    public class CategoryMap : EntityTypeConfiguration<Category>
     {
         /// <summary>
-        /// 初始化 <seealso cref="UserMap"/> 类的新实例。
+        /// 初始化 <seealso cref="CategoryMap"/> 类的新实例。
         /// </summary>
-        public UserMap()
+        public CategoryMap()
         {
-            ToTable("User");
+            ToTable("Category");
             HasKey(bp => bp.Id);
-            Property(bp => bp.Username).IsRequired();
-            Property(bp => bp.Password).IsRequired();
-            Property(bp => bp.Nicename).IsRequired();
-            Property(bp => bp.Email).IsRequired();
-            Property(bp => bp.Status).IsRequired();
+            Property(bp => bp.Name).IsRequired();
+
             Property(bp => bp.Deleted).IsRequired();
             Property(bp => bp.CreatedTime).IsRequired();
         }
