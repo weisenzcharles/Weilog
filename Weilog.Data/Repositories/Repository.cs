@@ -114,7 +114,7 @@ namespace Weilog.Data.Repositories
         }
         public IQueryable<TEntity> Queryable()
         {
-            return this.Queryable(true);
+            return Queryable(true);
         }
         public IQueryable<TEntity> Queryable(bool isTracking)
         {
@@ -265,6 +265,16 @@ namespace Weilog.Data.Repositories
                 foreach (var item in items)
                     SyncObjectGraph(item);
             }
+        }
+
+        public TEntity Get(object id)
+        {
+            return _dbSet.Find(id);
+        }
+
+        public TEntity Query(object id)
+        {
+            return _dbSet.Find(id);
         }
     }
 }

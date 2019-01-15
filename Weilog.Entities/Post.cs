@@ -20,8 +20,8 @@ namespace Weilog.Entities
         /// <summary>
         /// 类型。
         /// </summary>
-        public string Type { get; set; }
-        public string Status { get; set; }
+        public int Type { get; set; }
+        public int Status { get; set; }
         public DateTime ModifiedTime { get; set; }
 
 

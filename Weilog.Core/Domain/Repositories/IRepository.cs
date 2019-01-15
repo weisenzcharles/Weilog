@@ -19,6 +19,8 @@ namespace Weilog.Core.Domain.Repositories
         void Update(TEntity entity);
         void Delete(object id);
         void Delete(TEntity entity);
+        TEntity Get(object id);
+        TEntity Query(object id);
         IQueryFluent<TEntity> Query(IQueryObject<TEntity> queryObject);
         IQueryFluent<TEntity> Query(Expression<Func<TEntity, bool>> query);
         IQueryFluent<TEntity> Query();

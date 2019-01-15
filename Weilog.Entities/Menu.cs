@@ -20,7 +20,7 @@ namespace Weilog.Entities
         /// <summary>
         /// 类型。
         /// </summary>
-        public byte Type { get; set; }
+        public int Type { get; set; }
 
         /// <summary>
         /// 名称。

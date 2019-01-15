@@ -41,11 +41,30 @@ namespace Weilog.Web.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
-            User user = new User();
-            user.Username = "user" + DateTime.Now.Millisecond;
-            user.Password = "password" + DateTime.Now.Millisecond;
+            User user = new User
+            {
+                Username = "user" + DateTime.Now.Millisecond,
+                Password = "password" + DateTime.Now.Millisecond,
+                CreatedTime = DateTime.Now,
+                Email = "master" + DateTime.Now.Millisecond + "@weilog.net",
+                Status = true,
+                Nicename = "userNicename" + DateTime.Now.Millisecond,
+                Deleted = false
+            };
             _userService.Add(user);
             _unitOfWork.SaveChanges();
+
+            User user2 = new User
+            {
+                Username = "user2" + DateTime.Now.Millisecond,
+                Password = "password2" + DateTime.Now.Millisecond,
+                CreatedTime = DateTime.Now,
+                Email = "master2" + DateTime.Now.Millisecond + "@weilog.net",
+                Status = true,
+                Nicename = "user2Nicename" + DateTime.Now.Millisecond,
+                Deleted = false
+            };
+            _userService.Add(user2);
             return View();
         }
 
@@ -55,15 +74,25 @@ namespace Weilog.Web.Controllers
         /// <returns></returns>
         public ActionResult Update()
         {
-            User user = new User();
-            user.Id = 1;
-            user.Username = "user" + DateTime.Now.Millisecond;
-            user.Password = "password" + DateTime.Now.Millisecond;
+            User user = new User
+            {
+                Id = 1,
+                Username = "user" + DateTime.Now.Millisecond,
+                Password = "password" + DateTime.Now.Millisecond
+            };
             var userRepository = _unitOfWork.RepositoryAsync<User>();
             userRepository.Update(user);
             _unitOfWork.SaveChanges();
             return View();
         }
 
+        public ActionResult Delete()
+        {
+            var userRepository = _unitOfWork.RepositoryAsync<User>();
+            // userRepository.Update(user);
+            _userService.DeleteUser(2);
+           // _unitOfWork.SaveChanges();
+            return View();
+        }
     }
 }

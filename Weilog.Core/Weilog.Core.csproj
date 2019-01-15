@@ -127,10 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Services\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

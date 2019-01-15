@@ -11,5 +11,16 @@ namespace Weilog.Services
     {
         void Add(User user);
         IList<User> GetUsers();
+        User GetUser(string username);
+
+        void AddUser(User user);
+
+        void DeleteUser(int id);
+
+        void DeleteUser(User user);
+
+        void UpdateUser(User user);
+
+        User GetUser(int id);
     }
 }
