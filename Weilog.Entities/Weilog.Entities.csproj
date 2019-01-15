@@ -53,7 +53,7 @@
     <Compile Include="Role.cs" />
     <Compile Include="RoleMenu.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserRole.cs" />
+    <Compile Include="UserRoles.cs" />
     <Compile Include="UserStatus.cs" />
     <Compile Include="Widget.cs" />
   </ItemGroup>

@@ -13,6 +13,8 @@ using Weilog.Core.Domain.Uow;
 using Weilog.Core.Infrastructure;
 using Weilog.Data.DataContext;
 using LinqKit;
+using Weilog.Core.Domain.Entities;
+
 namespace Weilog.Data.Repositories
 {
     public class Repository<TEntity> : IRepositoryAsync<TEntity> where TEntity : class, IObjectState
@@ -98,6 +100,20 @@ namespace Weilog.Data.Repositories
             _context.SyncObjectState(entity);
         }
 
+        //public virtual void Remove(TEntity entity)
+        //{
+        //    entity.ObjectState = EntityState.Modified;
+        //    var obj = entity as EntityBase;
+        //    obj.Deleted = true;
+        //    _dbSet.Attach((TEntity)obj);
+        //    _context.SyncObjectState(obj);
+        //}
+
+        public TEntity Get(object id)
+        {
+            return _dbSet.Find(id);
+        }
+
         public IQueryFluent<TEntity> Query()
         {
             return new QueryFluent<TEntity>(this);
@@ -112,36 +128,14 @@ namespace Weilog.Data.Repositories
         {
             return new QueryFluent<TEntity>(this, query);
         }
+
         public IQueryable<TEntity> Queryable()
         {
             return Queryable(true);
         }
+
         public IQueryable<TEntity> Queryable(bool isTracking)
         {
-            //cache DBSet by connection
-            var dbContext = _context as DbContext;
-
-            //if (dbContext != null)
-            //{
-            //    string strCacheEntity = typeof(TEntity).Name;
-            //    bool canUseCache = CacheManager.Instance.GetDBCachePolicy().CanUseTotalCache(strCacheEntity);
-            //    if (canUseCache)
-            //    {
-            //        string strCacheKey = dbContext.Database.Connection.ConnectionString.GetHashCode() + "_" + strCacheEntity;
-            //        object objCached = CacheManager.Instance.GetCache(strCacheKey);
-            //        if (objCached != null)
-            //        {
-            //            return (IQueryable<TEntity>)objCached;
-            //        }
-            //        else
-            //        {
-            //            var objSet = dbContext.Set<TEntity>().ToList().AsQueryable<TEntity>();
-            //            CacheManager.Instance.SetCache(strCacheKey, objSet);
-            //            return objSet;
-            //        }
-            //    }
-            //}
-
             if (!isTracking) return _dbSet.AsNoTracking();
             return _dbSet;
         }
@@ -267,14 +261,7 @@ namespace Weilog.Data.Repositories
             }
         }
 
-        public TEntity Get(object id)
-        {
-            return _dbSet.Find(id);
-        }
 
-        public TEntity Query(object id)
-        {
-            return _dbSet.Find(id);
-        }
+
     }
 }

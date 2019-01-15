@@ -11,7 +11,7 @@ namespace Weilog.Entities
     /// <summary>
     /// 用户角色。
     /// </summary>
-    public class UserRole : EntityBase
+    public class UserRoles : EntityBase
     {
         /// <summary>
         /// 用户 Id。

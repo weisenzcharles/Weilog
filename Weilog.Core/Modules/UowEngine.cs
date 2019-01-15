@@ -98,7 +98,6 @@ namespace Weilog.Core.Modules
 
         #endregion
 
-
         #region Methods
 
         /// <summary>

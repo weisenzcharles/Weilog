@@ -54,7 +54,7 @@ namespace Weilog.Web.Areas.Admin.Controllers
             bool result = false;
             try
             {
-                var user = _userService.GetUser(userModel.Username);
+                var user = _userService.GetUser(1);
                 if (user == null)
                 {
                 }

@@ -11,7 +11,7 @@ namespace Weilog.Data.Mapping
     /// <summary>
     /// Weilog 内容管理系统 UserRoles 实体类型映射配置类。
     /// </summary>
-    public partial class UserRoleMap : EntityTypeConfiguration<UserRole>
+    public partial class UserRoleMap : EntityTypeConfiguration<UserRoles>
     {
         /// <summary>
         /// 初始化 <see cref="UserRolesMap"/> 类的新实例。

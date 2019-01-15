@@ -26,3 +26,7 @@
 /Weilog.Web.Framework/obj/
 /Tests/Weilog.Web.Tests/obj
 /Tests/Weilog.Web.Tests/bin/Debug
+/Weilog.Caching/bin/Debug
+/Weilog.Caching/obj/Debug
+/Weilog.Logger/bin/Debug
+/Weilog.Logger/obj/Debug

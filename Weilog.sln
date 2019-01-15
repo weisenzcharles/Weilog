@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Repositories", "Weil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Web.Tests", "Tests\Weilog.Web.Tests\Weilog.Web.Tests.csproj", "{27EB13F4-E1F3-4C33-B26E-0792F703F332}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Caching", "Weilog.Caching\Weilog.Caching.csproj", "{C5270CD9-36CD-4ECE-83C9-B1B1D78D7E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Logger", "Weilog.Logger\Weilog.Logger.csproj", "{49D0D3D8-64B5-46CA-A928-782A80BD95F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{27EB13F4-E1F3-4C33-B26E-0792F703F332}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27EB13F4-E1F3-4C33-B26E-0792F703F332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27EB13F4-E1F3-4C33-B26E-0792F703F332}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5270CD9-36CD-4ECE-83C9-B1B1D78D7E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5270CD9-36CD-4ECE-83C9-B1B1D78D7E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5270CD9-36CD-4ECE-83C9-B1B1D78D7E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5270CD9-36CD-4ECE-83C9-B1B1D78D7E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

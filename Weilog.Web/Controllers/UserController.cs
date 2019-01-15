@@ -27,7 +27,7 @@ namespace Weilog.Web.Controllers
         public ActionResult Index()
         {
             IList<User> users = new List<User>();
-            users = _userService.GetUsers();
+            users = _userService.GetUserList();
             List<User> users2 = new List<User>();
             users2 = _repository.Queryable(false).ToList();
             ViewData["users"] = users;
@@ -51,7 +51,7 @@ namespace Weilog.Web.Controllers
                 Nicename = "userNicename" + DateTime.Now.Millisecond,
                 Deleted = false
             };
-            _userService.Add(user);
+            _userService.AddUser(user);
             _unitOfWork.SaveChanges();
 
             User user2 = new User
@@ -64,7 +64,7 @@ namespace Weilog.Web.Controllers
                 Nicename = "user2Nicename" + DateTime.Now.Millisecond,
                 Deleted = false
             };
-            _userService.Add(user2);
+            _userService.AddUser(user2);
             return View();
         }
 

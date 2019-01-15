@@ -39,6 +39,6 @@ namespace Weilog.Entities
         /// 用户角色。
         /// </summary>
         [JsonIgnore]
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRoles> UserRoles { get; set; }
     }
 }
