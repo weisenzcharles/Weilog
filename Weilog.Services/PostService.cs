@@ -68,6 +68,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int AddPost(Post post, bool clearCache = true)
         {
             if (post == null)
@@ -87,6 +88,7 @@ namespace Weilog.Services
         /// 删除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
+        /// <returns>受影响记录数。</returns>
         public int DeletePost(Post post)
         {
             if (post == null)
@@ -104,12 +106,13 @@ namespace Weilog.Services
         /// <summary>
         /// 删除指定唯一编号的 <see cref="Post"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
-        public int DeletePost(int id)
+        /// <param name="postId">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
+        /// <returns>受影响记录数。</returns>
+        public int DeletePost(int postId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            _postRepository.DeletePost(id);
+            if (postId == 0)
+                throw new ArgumentNullException("postId");
+            _postRepository.DeletePost(postId);
             //cache
             _cacheManager.RemoveByPattern(CacheKeys.POST_PATTERN_KEY);
 
@@ -123,6 +126,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int UpdatePost(Post post, bool clearCache = true)
         {
             if (post == null)
@@ -143,53 +147,73 @@ namespace Weilog.Services
         /// 移除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
-        // public int RemovePost(Post post)
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemovePost(Post post, bool clearCache = true)
         // {
-        //        if (post == null)
-        //            throw new ArgumentNullException("post");
-        //      _postRepository.RemovePost(post);
-        //      _unitOfWork.SaveChanges();
+        //    if (post == null)
+        //        throw new ArgumentNullException("post");
+        //    _postRepository.RemovePost(post);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.POST_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
         
         /// <summary>
         /// 移除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="id">指定的 <see cref="Post"/> 实体对象唯一编号。</param>
-        // public int RemovePost(int id)
-        //        if (id == null)
-        //            throw new ArgumentNullException("id");
-        //      _postRepository.RemovePost(id);
-        //      _unitOfWork.SaveChanges();
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemovePost(int postId, bool clearCache = true)
+        //    if (postId == null)
+        //        throw new ArgumentNullException("postId");
+        //    _postRepository.RemovePost(postId);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.POST_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
             
         /// <summary>
         /// 查询指定编号的 <see cref="Post"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="Post"/> 实体对象编号。</param>
+        /// <param name="postId">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
         /// <returns>返回若存在则查询的 <see cref="Post"/> 实体对象，否则返回 Null。</returns>
-        public Post GetPost(int id)
+        public Post GetPost(int postId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            return _postRepository.GetPost(id);
+            if (postId == 0)
+                throw new ArgumentNullException("postId");
+            string key = string.Format(CacheKeys.POST_BY_ID_KEY, postId);
+            return _cacheManager.Get(key, () => _postRepository.GetPost(postId));
         }
         
         /// <summary>
-        /// 获取 <see cref="IList{Post}"/> 的数据集合。
+        /// 获取 <see cref="Post"/> 实体列表。
         /// </summary>
+        /// <returns>一个 <see cref="IList{Post}"/> 实体列表</returns>
         public IList<Post> GetPostList()
         {
             return _postRepository.GetPostList();
         }
 
         /// <summary>
-        /// 分页获取所有 <see cref="Post"/> 实体。
+        /// 分页获取 <see cref="Post"/> 实体列表。
         /// </summary>
+        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
+        /// <param name="pageSize">分页大小。</param>
+        /// <returns>一个支持分页的 <see cref="IPagedList{Post}"/> 实体列表</returns>
         public IPagedList<Post> GetPostPagedList(int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _postRepository.Queryable();
-            var postList = new PagedList<Post>(query, pageIndex, pageSize);
-            return postList;
+            var postList = new PagedList<Post>(new List<Post>(), pageIndex, pageSize);
+            string key = string.Format(CacheKeys.POST_PAGED_KEY, pageIndex, pageSize);
+            return _cacheManager.Get(key, () =>
+             {
+                 var query = _postRepository.Queryable();
+                 postList = new PagedList<Post>(query, pageIndex, pageSize);
+                 return postList;
+             });
         }
         
         #endregion

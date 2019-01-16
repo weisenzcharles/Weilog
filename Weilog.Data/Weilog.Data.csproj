@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
+    <Folder Include="Initialization\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Weilog.Core\Weilog.Core.csproj">

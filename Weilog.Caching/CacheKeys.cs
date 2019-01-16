@@ -14,17 +14,166 @@ namespace Weilog.Caching
 
         #region Constructors...
 
-        ///// <summary>
-        ///// 初始化 <see cref="CacheKeys"/> 类的新实例。
-        ///// </summary>
-        //public CacheKeys()
-        //{
+        /// <summary>
+        /// 初始化 <see cref="CacheKeys"/> 类的新实例。
+        /// </summary>
+        public CacheKeys()
+        {
 
-        //}
+        }
 
         #endregion
 
         #region Properties...
+
+        #region Menu...
+
+        /// <summary>
+        /// 用户缓存键。
+        /// </summary>
+        public const string USER_BY_ID_KEY = "WEILOG.USER.ID-{0}";
+        /// <summary>
+        /// 用户分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string USER_PAGED_KEY = "WEILOG.USER.PAGED-{0}-{1}";
+        /// <summary>
+        /// 用户匹配缓存键。
+        /// </summary>
+        public const string USER_PATTERN_KEY = "WEILOG.USER.";
+
+        #endregion
+
+        #region Menu...
+
+        /// <summary>
+        /// 菜单缓存键。
+        /// </summary>
+        public const string MENU_BY_ID_KEY = "WEILOG.MENU.ID-{0}";
+
+        /// <summary>
+        /// 菜单分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string MENU_PAGED_KEY = "WEILOG.MENU.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 菜单匹配缓存键。
+        /// </summary>
+        public const string MENU_PATTERN_KEY = "WEILOG.MENU.";
+
+        #endregion
+
+        #region UserRoles...
+
+        /// <summary>
+        /// 用户角色缓存键。
+        /// </summary>
+        public const string USERROLES_BY_ID_KEY = "WEILOG.USERROLES.ID-{0}";
+
+        /// <summary>
+        /// 用户角色分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string USERROLES_PAGED_KEY = "WEILOG.USERROLES.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 用户角色匹配缓存键。
+        /// </summary>
+        public const string USERROLES_PATTERN_KEY = "WEILOG.USERROLES.";
+        #endregion
+
+        #region Role...
+
+        /// <summary>
+        /// 角色缓存键。
+        /// </summary>
+        public const string ROLE_BY_ID_KEY = "WEILOG.ROLE.ID-{0}";
+
+        /// <summary>
+        /// 角色分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string ROLE_PAGED_KEY = "WEILOG.ROLE.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 角色匹配缓存键。
+        /// </summary>
+        public const string ROLE_PATTERN_KEY = "WEILOG.ROLE.";
+
+        #endregion
+
+        #region RoleMenu...
+
+        /// <summary>
+        /// 角色菜单缓存键。
+        /// </summary>
+        public const string ROLEMENU_BY_ID_KEY = "WEILOG.ROLEMENU.ID-{0}";
+
+        /// <summary>
+        /// 角色菜单分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string ROLEMENU_PAGED_KEY = "WEILOG.ROLEMENU.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 角色菜单匹配缓存键。
+        /// </summary>
+        public const string ROLEMENU_PATTERN_KEY = "WEILOG.ROLEMENU.";
+
+        #endregion
+
+        #region Post...
+
+        /// <summary>
+        /// 文章缓存键。
+        /// </summary>
+        public const string POST_BY_ID_KEY = "WEILOG.POST.ID-{0}";
+
+        /// <summary>
+        /// 文章分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string POST_PAGED_KEY = "WEILOG.POST.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 文章匹配缓存键。
+        /// </summary>
+        public const string POST_PATTERN_KEY = "WEILOG.POST.";
+
+        #endregion
+
+        #region Link...
+
+        /// <summary>
+        /// 链接缓存键。
+        /// </summary>
+        public const string LINK_BY_ID_KEY = "WEILOG.LINK.ID-{0}";
+
+        /// <summary>
+        /// 链接分页缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string LINK_PAGED_KEY = "WEILOG.LINK.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 链接匹配缓存键。
+        /// </summary>
+        public const string LINK_PATTERN_KEY = "WEILOG.LINK.";
+
+        #endregion
+
+        #region Category...
+
+        /// <summary>
+        /// 分类缓存键。
+        /// </summary>
+        public const string CATEGORY_BY_ID_KEY = "WEILOG.CATEGORY.ID-{0}";
+
+        /// <summary>
+        /// 分类列表缓存键，{0}：分页索引，{1}：分页大小。
+        /// </summary>
+        public const string CATEGORY_PAGED_KEY = "WEILOG.CATEGORY.PAGED-{0}-{1}";
+
+        /// <summary>
+        /// 分类匹配缓存键。
+        /// </summary>
+        public const string CATEGORY_PATTERN_KEY = "WEILOG.CATEGORY.";
+
+        #endregion
 
         /// <summary>
         /// 设置信息缓存键。
@@ -105,15 +254,6 @@ namespace Weilog.Caching
         /// Url重写缓存信息缓存字段，{0}.缓存前缀。
         /// </summary>
         public const string URLREWRITE = "{0}.URLREWRITE";
-        public static readonly string ROLE_PATTERN_KEY;
-        public static readonly string CATEGORY_PATTERN_KEY;
-        public static readonly string POST_PATTERN_KEY;
-        public static string USER_PATTERN_KEY;
-        public static string LINK_PATTERN_KEY;
-        public static string USERROLES_PATTERN_KEY;
-
-        public static string MENU_PATTERN_KEY { get; set; }
-        public static string ROLEMENU_PATTERN_KEY { get; set; }
 
         #endregion
 

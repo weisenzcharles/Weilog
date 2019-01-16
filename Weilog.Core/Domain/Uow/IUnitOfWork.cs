@@ -33,8 +33,7 @@ namespace Weilog.Core.Domain.Uow
         /// <summary>
         /// 提交数据库事务。
         /// </summary>
-        /// <returns></returns>
-        bool Commit();
+        void Commit();
         /// <summary>
         /// 从挂起状态回滚事务。
         /// </summary>

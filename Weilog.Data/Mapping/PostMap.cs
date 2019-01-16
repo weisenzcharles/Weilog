@@ -25,7 +25,7 @@ namespace Weilog.Data.Mapping
             Property(entity => entity.Title).HasMaxLength(512);
             Property(entity => entity.Author).HasMaxLength(400);
             Property(entity => entity.Excerpt).HasMaxLength(1024);
-            Property(entity => entity.Content).HasMaxLength(400);
+            Property(entity => entity.Content).HasMaxLength(int.MaxValue);
             Property(entity => entity.Type).IsRequired();
             Property(entity => entity.Status).IsRequired();
             Property(entity => entity.ModifiedTime).IsRequired();

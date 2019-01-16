@@ -68,6 +68,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="userRoles">指定的 <see cref="UserRoles"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int AddUserRoles(UserRoles userRoles, bool clearCache = true)
         {
             if (userRoles == null)
@@ -87,6 +88,7 @@ namespace Weilog.Services
         /// 删除指定的 <see cref="UserRoles"/> 实体对象。
         /// </summary>
         /// <param name="userRoles">指定的 <see cref="UserRoles"/> 实体对象。</param>
+        /// <returns>受影响记录数。</returns>
         public int DeleteUserRoles(UserRoles userRoles)
         {
             if (userRoles == null)
@@ -104,12 +106,14 @@ namespace Weilog.Services
         /// <summary>
         /// 删除指定唯一编号的 <see cref="UserRoles"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="UserRoles"/> 实体对象的唯一编号。</param>
-        public int DeleteUserRoles(int id)
+        /// <param name="userRolesId">指定的 <see cref="UserRoles"/> 实体对象的唯一编号。</param>
+        /// <returns>受影响记录数。</returns>
+        public int DeleteUserRoles(int userRolesId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            _userRolesRepository.DeleteUserRoles(id);
+            if (userRolesId == 0)
+                throw new ArgumentNullException("userRolesId");
+
+            _userRolesRepository.DeleteUserRoles(userRolesId);
             //cache
             _cacheManager.RemoveByPattern(CacheKeys.USERROLES_PATTERN_KEY);
 
@@ -123,6 +127,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="userRoles">指定的 <see cref="UserRoles"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int UpdateUserRoles(UserRoles userRoles, bool clearCache = true)
         {
             if (userRoles == null)
@@ -143,53 +148,73 @@ namespace Weilog.Services
         /// 移除指定的 <see cref="UserRoles"/> 实体对象。
         /// </summary>
         /// <param name="userRoles">指定的 <see cref="UserRoles"/> 实体对象。</param>
-        // public int RemoveUserRoles(UserRoles userRoles)
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemoveUserRoles(UserRoles userRoles, bool clearCache = true)
         // {
-        //        if (userRoles == null)
-        //            throw new ArgumentNullException("userRoles");
-        //      _userRolesRepository.RemoveUserRoles(userRoles);
-        //      _unitOfWork.SaveChanges();
+        //    if (userRoles == null)
+        //        throw new ArgumentNullException("userRoles");
+        //    _userRolesRepository.RemoveUserRoles(userRoles);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.USERROLES_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
         
         /// <summary>
         /// 移除指定的 <see cref="UserRoles"/> 实体对象。
         /// </summary>
         /// <param name="id">指定的 <see cref="UserRoles"/> 实体对象唯一编号。</param>
-        // public int RemoveUserRoles(int id)
-        //        if (id == null)
-        //            throw new ArgumentNullException("id");
-        //      _userRolesRepository.RemoveUserRoles(id);
-        //      _unitOfWork.SaveChanges();
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemoveUserRoles(int userRolesId, bool clearCache = true)
+        //    if (userRolesId == null)
+        //        throw new ArgumentNullException("userRolesId");
+        //    _userRolesRepository.RemoveUserRoles(userRolesId);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.USERROLES_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
             
         /// <summary>
         /// 查询指定编号的 <see cref="UserRoles"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="UserRoles"/> 实体对象编号。</param>
+        /// <param name="userRolesId">指定的 <see cref="UserRoles"/> 实体对象的唯一编号。</param>
         /// <returns>返回若存在则查询的 <see cref="UserRoles"/> 实体对象，否则返回 Null。</returns>
-        public UserRoles GetUserRoles(int id)
+        public UserRoles GetUserRoles(int userRolesId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            return _userRolesRepository.GetUserRoles(id);
+            if (userRolesId == 0)
+                throw new ArgumentNullException("userRolesId");
+            string key = string.Format(CacheKeys.USERROLES_BY_ID_KEY, userRolesId);
+            return _cacheManager.Get(key, () => _userRolesRepository.GetUserRoles(userRolesId));
         }
         
         /// <summary>
-        /// 获取 <see cref="IList{UserRoles}"/> 的数据集合。
+        /// 获取 <see cref="UserRoles"/> 实体列表。
         /// </summary>
+        /// <returns>一个 <see cref="IList{UserRoles}"/> 实体列表</returns>
         public IList<UserRoles> GetUserRolesList()
         {
             return _userRolesRepository.GetUserRolesList();
         }
 
         /// <summary>
-        /// 分页获取所有 <see cref="UserRoles"/> 实体。
+        /// 分页获取 <see cref="UserRoles"/> 实体列表。
         /// </summary>
+        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
+        /// <param name="pageSize">分页大小。</param>
+        /// <returns>一个支持分页的 <see cref="IPagedList{UserRoles}"/> 实体列表</returns>
         public IPagedList<UserRoles> GetUserRolesPagedList(int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _userRolesRepository.Queryable();
-            var userRolesList = new PagedList<UserRoles>(query, pageIndex, pageSize);
-            return userRolesList;
+            var userRolesList = new PagedList<UserRoles>(new List<UserRoles>(), pageIndex, pageSize);
+            string key = string.Format(CacheKeys.USERROLES_PAGED_KEY, pageIndex, pageSize);
+            return _cacheManager.Get(key, () =>
+             {
+                 var query = _userRolesRepository.Queryable();
+                 userRolesList = new PagedList<UserRoles>(query, pageIndex, pageSize);
+                 return userRolesList;
+             });
         }
         
         #endregion

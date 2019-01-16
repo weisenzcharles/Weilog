@@ -68,6 +68,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="user">指定的 <see cref="User"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int AddUser(User user, bool clearCache = true)
         {
             if (user == null)
@@ -87,6 +88,7 @@ namespace Weilog.Services
         /// 删除指定的 <see cref="User"/> 实体对象。
         /// </summary>
         /// <param name="user">指定的 <see cref="User"/> 实体对象。</param>
+        /// <returns>受影响记录数。</returns>
         public int DeleteUser(User user)
         {
             if (user == null)
@@ -104,12 +106,13 @@ namespace Weilog.Services
         /// <summary>
         /// 删除指定唯一编号的 <see cref="User"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="User"/> 实体对象的唯一编号。</param>
-        public int DeleteUser(int id)
+        /// <param name="userId">指定的 <see cref="User"/> 实体对象的唯一编号。</param>
+        /// <returns>受影响记录数。</returns>
+        public int DeleteUser(int userId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            _userRepository.DeleteUser(id);
+            if (userId == 0)
+                throw new ArgumentNullException("userId");
+            _userRepository.DeleteUser(userId);
             //cache
             _cacheManager.RemoveByPattern(CacheKeys.USER_PATTERN_KEY);
 
@@ -123,6 +126,7 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="user">指定的 <see cref="User"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
         public int UpdateUser(User user, bool clearCache = true)
         {
             if (user == null)
@@ -143,53 +147,73 @@ namespace Weilog.Services
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
         /// <param name="user">指定的 <see cref="User"/> 实体对象。</param>
-        // public int RemoveUser(User user)
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemoveUser(User user, bool clearCache = true)
         // {
-        //        if (user == null)
-        //            throw new ArgumentNullException("user");
-        //      _userRepository.RemoveUser(user);
-        //      _unitOfWork.SaveChanges();
+        //    if (user == null)
+        //        throw new ArgumentNullException("user");
+        //    _userRepository.RemoveUser(user);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.USER_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
         
         /// <summary>
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
         /// <param name="id">指定的 <see cref="User"/> 实体对象唯一编号。</param>
-        // public int RemoveUser(int id)
-        //        if (id == null)
-        //            throw new ArgumentNullException("id");
-        //      _userRepository.RemoveUser(id);
-        //      _unitOfWork.SaveChanges();
+        /// <param name="clearCache">是否清除缓存。</param>
+        /// <returns>受影响记录数。</returns>
+        // public int RemoveUser(int userId, bool clearCache = true)
+        //    if (userId == null)
+        //        throw new ArgumentNullException("userId");
+        //    _userRepository.RemoveUser(userId);
+        //    //cache
+        //    if (clearCache)
+        //        _cacheManager.RemoveByPattern(CacheKeys.USER_PATTERN_KEY);
+        //    return _unitOfWork.SaveChanges();
         // }
             
         /// <summary>
         /// 查询指定编号的 <see cref="User"/> 实体对象。
         /// </summary>
-        /// <param name="id">指定的 <see cref="User"/> 实体对象编号。</param>
+        /// <param name="userId">指定的 <see cref="User"/> 实体对象的唯一编号。</param>
         /// <returns>返回若存在则查询的 <see cref="User"/> 实体对象，否则返回 Null。</returns>
-        public User GetUser(int id)
+        public User GetUser(int userId)
         {
-            if (id == 0)
-                throw new ArgumentNullException("id");
-            return _userRepository.GetUser(id);
+            if (userId == 0)
+                throw new ArgumentNullException("userId");
+            string key = string.Format(CacheKeys.USER_BY_ID_KEY, userId);
+            return _cacheManager.Get(key, () => _userRepository.GetUser(userId));
         }
         
         /// <summary>
-        /// 获取 <see cref="IList{User}"/> 的数据集合。
+        /// 获取 <see cref="User"/> 实体列表。
         /// </summary>
+        /// <returns>一个 <see cref="IList{User}"/> 实体列表</returns>
         public IList<User> GetUserList()
         {
             return _userRepository.GetUserList();
         }
 
         /// <summary>
-        /// 分页获取所有 <see cref="User"/> 实体。
+        /// 分页获取 <see cref="User"/> 实体列表。
         /// </summary>
+        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
+        /// <param name="pageSize">分页大小。</param>
+        /// <returns>一个支持分页的 <see cref="IPagedList{User}"/> 实体列表</returns>
         public IPagedList<User> GetUserPagedList(int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var query = _userRepository.Queryable();
-            var userList = new PagedList<User>(query, pageIndex, pageSize);
-            return userList;
+            var userList = new PagedList<User>(new List<User>(), pageIndex, pageSize);
+            string key = string.Format(CacheKeys.USER_PAGED_KEY, pageIndex, pageSize);
+            return _cacheManager.Get(key, () =>
+             {
+                 var query = _userRepository.Queryable();
+                 userList = new PagedList<User>(query, pageIndex, pageSize);
+                 return userList;
+             });
         }
         
         #endregion
