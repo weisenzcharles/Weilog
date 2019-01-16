@@ -68,7 +68,6 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="menu">指定的 <see cref="Menu"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         public int AddMenu(Menu menu, bool clearCache = true)
         {
             if (menu == null)
@@ -88,7 +87,6 @@ namespace Weilog.Services
         /// 删除指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
         /// <param name="menu">指定的 <see cref="Menu"/> 实体对象。</param>
-        /// <returns>受影响记录数。</returns>
         public int DeleteMenu(Menu menu)
         {
             if (menu == null)
@@ -106,13 +104,12 @@ namespace Weilog.Services
         /// <summary>
         /// 删除指定唯一编号的 <see cref="Menu"/> 实体对象。
         /// </summary>
-        /// <param name="menuId">指定的 <see cref="Menu"/> 实体对象的唯一编号。</param>
-        /// <returns>受影响记录数。</returns>
-        public int DeleteMenu(int menuId)
+        /// <param name="id">指定的 <see cref="Menu"/> 实体对象的唯一编号。</param>
+        public int DeleteMenu(int id)
         {
-            if (menuId == 0)
-                throw new ArgumentNullException("menuId");
-            _menuRepository.DeleteMenu(menuId);
+            if (id == 0)
+                throw new ArgumentNullException("id");
+            _menuRepository.DeleteMenu(id);
             //cache
             _cacheManager.RemoveByPattern(CacheKeys.MENU_PATTERN_KEY);
 
@@ -126,7 +123,6 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="menu">指定的 <see cref="Menu"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         public int UpdateMenu(Menu menu, bool clearCache = true)
         {
             if (menu == null)
@@ -147,73 +143,53 @@ namespace Weilog.Services
         /// 移除指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
         /// <param name="menu">指定的 <see cref="Menu"/> 实体对象。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
-        // public int RemoveMenu(Menu menu, bool clearCache = true)
+        // public int RemoveMenu(Menu menu)
         // {
-        //    if (menu == null)
-        //        throw new ArgumentNullException("menu");
-        //    _menuRepository.RemoveMenu(menu);
-        //    //cache
-        //    if (clearCache)
-        //        _cacheManager.RemoveByPattern(CacheKeys.MENU_PATTERN_KEY);
-        //    return _unitOfWork.SaveChanges();
+        //        if (menu == null)
+        //            throw new ArgumentNullException("menu");
+        //      _menuRepository.RemoveMenu(menu);
+        //      _unitOfWork.SaveChanges();
         // }
         
         /// <summary>
         /// 移除指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
         /// <param name="id">指定的 <see cref="Menu"/> 实体对象唯一编号。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
-        // public int RemoveMenu(int menuId, bool clearCache = true)
-        //    if (menuId == null)
-        //        throw new ArgumentNullException("menuId");
-        //    _menuRepository.RemoveMenu(menuId);
-        //    //cache
-        //    if (clearCache)
-        //        _cacheManager.RemoveByPattern(CacheKeys.MENU_PATTERN_KEY);
-        //    return _unitOfWork.SaveChanges();
+        // public int RemoveMenu(int id)
+        //        if (id == null)
+        //            throw new ArgumentNullException("id");
+        //      _menuRepository.RemoveMenu(id);
+        //      _unitOfWork.SaveChanges();
         // }
             
         /// <summary>
         /// 查询指定编号的 <see cref="Menu"/> 实体对象。
         /// </summary>
-        /// <param name="menuId">指定的 <see cref="Menu"/> 实体对象的唯一编号。</param>
+        /// <param name="id">指定的 <see cref="Menu"/> 实体对象编号。</param>
         /// <returns>返回若存在则查询的 <see cref="Menu"/> 实体对象，否则返回 Null。</returns>
-        public Menu GetMenu(int menuId)
+        public Menu GetMenu(int id)
         {
-            if (menuId == 0)
-                throw new ArgumentNullException("menuId");
-            string key = string.Format(CacheKeys.MENU_BY_ID_KEY, menuId);
-            return _cacheManager.Get(key, () => _menuRepository.GetMenu(menuId));
+            if (id == 0)
+                throw new ArgumentNullException("id");
+            return _menuRepository.GetMenu(id);
         }
         
         /// <summary>
-        /// 获取 <see cref="Menu"/> 实体列表。
+        /// 获取 <see cref="IList{Menu}"/> 的数据集合。
         /// </summary>
-        /// <returns>一个 <see cref="IList{Menu}"/> 实体列表</returns>
         public IList<Menu> GetMenuList()
         {
             return _menuRepository.GetMenuList();
         }
 
         /// <summary>
-        /// 分页获取 <see cref="Menu"/> 实体列表。
+        /// 分页获取所有 <see cref="Menu"/> 实体。
         /// </summary>
-        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
-        /// <param name="pageSize">分页大小。</param>
-        /// <returns>一个支持分页的 <see cref="IPagedList{Menu}"/> 实体列表</returns>
         public IPagedList<Menu> GetMenuPagedList(int pageIndex = 0, int pageSize = int.MaxValue)
         {
-            var menuList = new PagedList<Menu>(new List<Menu>(), pageIndex, pageSize);
-            string key = string.Format(CacheKeys.MENU_PAGED_KEY, pageIndex, pageSize);
-            return _cacheManager.Get(key, () =>
-             {
-                 var query = _menuRepository.Queryable();
-                 menuList = new PagedList<Menu>(query, pageIndex, pageSize);
-                 return menuList;
-             });
+            var query = _menuRepository.Queryable();
+            var menuList = new PagedList<Menu>(query, pageIndex, pageSize);
+            return menuList;
         }
         
         #endregion

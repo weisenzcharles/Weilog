@@ -19,10 +19,10 @@ namespace Weilog.Data.Mapping
             ToTable("User");
             HasKey(entity => entity.Id);
             Property(entity => entity.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(entity => entity.Username).HasMaxLength(64).IsRequired();
-            Property(entity => entity.Password).HasMaxLength(256).IsRequired();
-            Property(entity => entity.Nicename).HasMaxLength(64).IsRequired();
-            Property(entity => entity.Email).HasMaxLength(256);
+            Property(entity => entity.Username).IsRequired();
+            Property(entity => entity.Password).IsRequired();
+            Property(entity => entity.Nicename).IsRequired().HasMaxLength(64);
+            Property(entity => entity.Email).IsRequired();
             Property(entity => entity.Status).IsRequired();
             Property(entity => entity.Deleted).IsRequired();
             Property(entity => entity.CreatedTime).IsRequired();
