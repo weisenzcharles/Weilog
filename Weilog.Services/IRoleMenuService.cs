@@ -34,67 +34,55 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="roleMenu">指定的 <see cref="RoleMenu"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         int AddRoleMenu(RoleMenu roleMenu, bool clearCache = true);
 
         /// <summary>
         /// 删除指定的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
         /// <param name="roleMenu">指定的 <see cref="RoleMenu"/> 实体对象。</param>
-        /// <returns>受影响记录数。</returns>
         int DeleteRoleMenu(RoleMenu roleMenu);
         
         /// <summary>
         /// 删除指定唯一编号的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
-        /// <param name="roleMenuId">指定的 <see cref="RoleMenu"/> 实体对象的唯一编号。</param>
-        /// <returns>受影响记录数。</returns>
-        int DeleteRoleMenu(int roleMenuId);
+        /// <param name="id">指定的 <see cref="RoleMenu"/> 实体对象的唯一编号。</param>
+        int DeleteRoleMenu(int id);
                 
         /// <summary>
         /// 更新指定的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
         /// <param name="roleMenu">指定的 <see cref="RoleMenu"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         int UpdateRoleMenu(RoleMenu roleMenu, bool clearCache = true);
         
         /// <summary>
         /// 移除指定的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
         /// <param name="roleMenu">指定的 <see cref="RoleMenu"/> 实体对象。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         // int RemoveRoleMenu(RoleMenu roleMenu);
         
         /// <summary>
         /// 移除指定的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
-        /// <param name="roleMenuId">指定的 <see cref="RoleMenu"/> 实体对象唯一编号。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
-        // int RemoveRoleMenu(int roleMenuId);
+        /// <param name="id">指定的 <see cref="RoleMenu"/> 实体对象唯一编号。</param>
+        // int RemoveRoleMenu(int id);
             
         /// <summary>
         /// 查询指定编号的 <see cref="RoleMenu"/> 实体对象。
         /// </summary>
-        /// <param name="roleMenuId">指定的 <see cref="RoleMenu"/> 实体对象的唯一编号。</param>
+        /// <param name="id">指定的 <see cref="RoleMenu"/> 实体对象编号。</param>
         /// <returns>返回若存在则查询的 <see cref="RoleMenu"/> 实体对象，否则返回 Null。</returns>
-        RoleMenu GetRoleMenu(int roleMenuId);
+        RoleMenu GetRoleMenu(int id);
 
         
         /// <summary>
-        /// 获取 <see cref="RoleMenu"/> 实体列表。
+        /// 获取 <see cref="IList{RoleMenu}"/> 的数据集合。
         /// </summary>
-        /// <returns>一个 <see cref="IList{RoleMenu}"/> 实体列表</returns>
         IList<RoleMenu> GetRoleMenuList();
 
         /// <summary>
-        /// 分页获取 <see cref="RoleMenu"/> 实体列表。
+        /// 分页获取所有 <see cref="RoleMenu"/> 实体。
         /// </summary>
-        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
-        /// <param name="pageSize">分页大小。</param>
-        /// <returns>一个支持分页的 <see cref="IPagedList{RoleMenu}"/> 实体列表</returns>
         IPagedList<RoleMenu> GetRoleMenuPagedList(int pageIndex = 0, int pageSize = int.MaxValue);
         
         #endregion
