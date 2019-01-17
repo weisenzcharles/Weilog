@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Weilog.Logger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Weilog Team")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Weilog.Logger")]
-[assembly: AssemblyCopyright("Copyright © 2010-2018 Weilog. All Rights Reserved")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -23,14 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Caching", "Weilog.Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Logger", "Weilog.Logger\Weilog.Logger.csproj", "{49D0D3D8-64B5-46CA-A928-782A80BD95F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Admin", "Weilog.Admin\Weilog.Admin.csproj", "{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Admin.Tests", "Weilog.Admin.Tests\Weilog.Admin.Tests.csproj", "{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{359F3262-3231-4EA2-89E0-A6374BF305EB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weilog.Tests", "Weilog.Tests\Weilog.Tests.csproj", "{678B4EFA-7591-4ED4-BF3B-A2612C92E130}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,26 +69,9 @@ Global
 		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D0D3D8-64B5-46CA-A928-782A80BD95F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{678B4EFA-7591-4ED4-BF3B-A2612C92E130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{678B4EFA-7591-4ED4-BF3B-A2612C92E130}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{678B4EFA-7591-4ED4-BF3B-A2612C92E130}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{678B4EFA-7591-4ED4-BF3B-A2612C92E130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{27EB13F4-E1F3-4C33-B26E-0792F703F332} = {359F3262-3231-4EA2-89E0-A6374BF305EB}
-		{EEAD6655-F703-4AB6-ACD4-D8E7F316A18C} = {359F3262-3231-4EA2-89E0-A6374BF305EB}
-		{678B4EFA-7591-4ED4-BF3B-A2612C92E130} = {359F3262-3231-4EA2-89E0-A6374BF305EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {462C7400-3114-402A-8F2E-BBC0E9D670DA}

@@ -34,67 +34,55 @@ namespace Weilog.Services
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         int AddPost(Post post, bool clearCache = true);
 
         /// <summary>
         /// 删除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
-        /// <returns>受影响记录数。</returns>
         int DeletePost(Post post);
         
         /// <summary>
         /// 删除指定唯一编号的 <see cref="Post"/> 实体对象。
         /// </summary>
-        /// <param name="postId">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
-        /// <returns>受影响记录数。</returns>
-        int DeletePost(int postId);
+        /// <param name="id">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
+        int DeletePost(int id);
                 
         /// <summary>
         /// 更新指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
         /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         int UpdatePost(Post post, bool clearCache = true);
         
         /// <summary>
         /// 移除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
         /// <param name="post">指定的 <see cref="Post"/> 实体对象。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
         // int RemovePost(Post post);
         
         /// <summary>
         /// 移除指定的 <see cref="Post"/> 实体对象。
         /// </summary>
-        /// <param name="postId">指定的 <see cref="Post"/> 实体对象唯一编号。</param>
-        /// <param name="clearCache">是否清除缓存。</param>
-        /// <returns>受影响记录数。</returns>
-        // int RemovePost(int postId);
+        /// <param name="id">指定的 <see cref="Post"/> 实体对象唯一编号。</param>
+        // int RemovePost(int id);
             
         /// <summary>
         /// 查询指定编号的 <see cref="Post"/> 实体对象。
         /// </summary>
-        /// <param name="postId">指定的 <see cref="Post"/> 实体对象的唯一编号。</param>
+        /// <param name="id">指定的 <see cref="Post"/> 实体对象编号。</param>
         /// <returns>返回若存在则查询的 <see cref="Post"/> 实体对象，否则返回 Null。</returns>
-        Post GetPost(int postId);
+        Post GetPost(int id);
 
         
         /// <summary>
-        /// 获取 <see cref="Post"/> 实体列表。
+        /// 获取 <see cref="IList{Post}"/> 的数据集合。
         /// </summary>
-        /// <returns>一个 <see cref="IList{Post}"/> 实体列表</returns>
         IList<Post> GetPostList();
 
         /// <summary>
-        /// 分页获取 <see cref="Post"/> 实体列表。
+        /// 分页获取所有 <see cref="Post"/> 实体。
         /// </summary>
-        /// <param name="pageIndex">分页索引，默认从 0 开始。</param>
-        /// <param name="pageSize">分页大小。</param>
-        /// <returns>一个支持分页的 <see cref="IPagedList{Post}"/> 实体列表</returns>
         IPagedList<Post> GetPostPagedList(int pageIndex = 0, int pageSize = int.MaxValue);
         
         #endregion
