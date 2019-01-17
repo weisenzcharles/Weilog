@@ -93,7 +93,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Weilog.Admin\Weilog.Admin.csproj">
+    <ProjectReference Include="..\..\Weilog.Admin\Weilog.Admin.csproj">
       <Project>{5F9A6D55-BBD3-46EB-8601-EF9AECDA6CE1}</Project>
       <Name>Weilog.Admin</Name>
     </ProjectReference>

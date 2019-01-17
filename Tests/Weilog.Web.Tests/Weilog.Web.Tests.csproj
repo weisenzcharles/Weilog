@@ -79,7 +79,7 @@
       <Project>{0DCD268A-31DC-4BD3-874D-93BE9BEFEC7A}</Project>
       <Name>Weilog.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Weilog.Tests\Weilog.Tests.csproj">
+    <ProjectReference Include="..\Weilog.Tests\Weilog.Tests.csproj">
       <Project>{678b4efa-7591-4ed4-bf3b-a2612c92e130}</Project>
       <Name>Weilog.Tests</Name>
     </ProjectReference>
