@@ -36,8 +36,6 @@ namespace Weilog.Web.Areas.Admin.Controllers
 
         #endregion
 
-
-
         /// <summary>
         /// 当前登录用户。
         /// </summary>

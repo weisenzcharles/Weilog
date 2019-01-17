@@ -5,27 +5,29 @@ using System.Web;
 using System.Web.Mvc;
 using Weilog.Core.Domain.Repositories;
 using Weilog.Entities;
+using Weilog.Services;
+
 namespace Weilog.Web.Controllers
 {
     public class HomeController : Controller
     {
 
-        private readonly IRepositoryAsync<User> _repository;
+        private readonly IUserService _userService;
 
         //public HomeController()
         //{
 
         //}
 
-        public HomeController(IRepositoryAsync<User> userRepository)
+        public HomeController(IUserService userService)
         {
-            _repository = userRepository;
+            _userService = userService;
         }
 
         public ActionResult Index()
         {
-            List<User> users = new List<User>();
-            users = _repository.Queryable(false).ToList();
+            IList<User> users = new List<User>();
+            users = _userService.GetUserList();
 
             return View();
         }

@@ -5,15 +5,15 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Weilog.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Weilog Team")]
 [assembly: AssemblyProduct("Weilog.Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2010-2018 Weilog. All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 
-[assembly: Guid("678b4efa-7591-4ed4-bf3b-a2612c92e130")]
+[assembly: Guid("32a46d90-8417-477f-9d3c-8db08674cb5b")]
 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
