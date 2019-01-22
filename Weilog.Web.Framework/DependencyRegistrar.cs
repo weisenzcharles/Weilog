@@ -19,6 +19,8 @@ using Weilog.Entities;
 using Weilog.Repositories;
 using Weilog.Services;
 using System.Data.SQLite;
+using Weilog.Caching;
+
 namespace Weilog.Web.Framework
 {
     /// <summary>
@@ -46,23 +48,37 @@ namespace Weilog.Web.Framework
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
 
             // DbContext
-            //builder.RegisterType<SQLiteDbContext>().As<IDataContextAsync>().InstancePerLifetimeScope();
-            //builder.Register(context => new SQLiteDbContext(context.Resolve <SQLiteConnection("data source=:memory:")> ()))
-            //.As<IDataContext>().InstancePerLifetimeScope();
-            //builder.Register(context => new SQLiteDbContext(new SQLiteConnection("data source=:memory:"), false)).As<IDataContextAsync>().InstancePerLifetimeScope();
             builder.Register<IDataContextAsync>(c => new SQLiteDbContext("uow")).InstancePerLifetimeScope();
-            //builder.Register(c => (new SQLiteDbContext(""))
+
             // UnitOfWork
             builder.RegisterType<UnitOfWork>().As<IUnitOfWorkAsync>().InstancePerLifetimeScope();
 
             // repository
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepositoryAsync<>)).InstancePerLifetimeScope();
 
+            // caches
+            builder.RegisterType<MemoryCacheManager>().As<ICacheManager>().Named<ICacheManager>("weilog_cache_static").SingleInstance();
+            builder.RegisterType<RequestCacheManager>().As<ICacheManager>().Named<ICacheManager>("weilog_cache_per_request").InstancePerLifetimeScope();
+
             // repositories
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<LinkRepository>().As<ILinkRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<MenuRepository>().As<IMenuRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<PostRepository>().As<IPostRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<RoleRepository>().As<IRoleRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<RoleMenuRepository>().As<IRoleMenuRepository>().InstancePerLifetimeScope();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<UserRolesRepository>().As<IUserRolesRepository>().InstancePerLifetimeScope();
 
             // services
+            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<LinkService>().As<ILinkService>().InstancePerLifetimeScope();
+            builder.RegisterType<MenuService>().As<IMenuService>().InstancePerLifetimeScope();
+            builder.RegisterType<PostService>().As<IPostService>().InstancePerLifetimeScope();
+            builder.RegisterType<RoleService>().As<IRoleService>().InstancePerLifetimeScope();
+            builder.RegisterType<RoleMenuService>().As<IRoleMenuService>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<UserRolesService>().As<IUserRolesService>().InstancePerLifetimeScope();
         }
 
         /// <summary>

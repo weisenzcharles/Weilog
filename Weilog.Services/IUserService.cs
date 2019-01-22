@@ -73,8 +73,13 @@ namespace Weilog.Services
         /// <param name="id">指定的 <see cref="User"/> 实体对象编号。</param>
         /// <returns>返回若存在则查询的 <see cref="User"/> 实体对象，否则返回 Null。</returns>
         User GetUser(int id);
+        /// <summary>
+        /// 查询指定编号的 <see cref="User"/> 实体对象。
+        /// </summary>
+        /// <param name="id">指定的 <see cref="User"/> 实体对象编号。</param>
+        /// <returns>返回若存在则查询的 <see cref="User"/> 实体对象，否则返回 Null。</returns>
+        User GetUserByUsername(string username);
 
-        
         /// <summary>
         /// 获取 <see cref="IList{User}"/> 的数据集合。
         /// </summary>

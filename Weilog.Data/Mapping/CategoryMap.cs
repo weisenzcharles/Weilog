@@ -18,6 +18,7 @@ namespace Weilog.Data.Mapping
         /// </summary>
         public CategoryMap()
         {
+            
             ToTable("Category");
             HasKey(entity => entity.Id);
             Property(entity => entity.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

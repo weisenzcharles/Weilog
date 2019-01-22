@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Weilog.Web.Framework.Controllers;
 
 namespace Weilog.Web.Areas.Admin.Controllers
 {
-    public class MenuController : AdminController
+    public class MenuController : BaseAdminController
     {
         // GET: Admin/Menu
         public ActionResult Index()

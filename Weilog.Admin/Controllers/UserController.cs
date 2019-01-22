@@ -10,9 +10,11 @@ using Weilog.Entities;
 using Weilog.Services;
 using Weilog.Web.Framework.Models;
 using Weilog.Core.Extensions;
+using Weilog.Web.Framework.Controllers;
+
 namespace Weilog.Web.Areas.Admin.Controllers
 {
-    public class UsersController : AdminController
+    public class UsersController : BaseAdminController
     {
         #region Fields...
 

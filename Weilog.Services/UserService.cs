@@ -23,9 +23,9 @@ namespace Weilog.Services
     /// <summary>
     /// Weilog 内容管理系统 <see cref="User"/> 业务服务类。
     /// </summary>
-     public partial class UserService : IUserService
-     {
-     
+    public partial class UserService : IUserService
+    {
+
         #region Constants...
 
         #endregion
@@ -38,9 +38,9 @@ namespace Weilog.Services
         private readonly ICacheManager _cacheManager;
 
         #endregion
-        
+
         #region Ctor...
-     
+
         /// <summary>
         /// 初始化 <see cref="UserService"/> 类的新实例。
         /// </summary>
@@ -58,11 +58,11 @@ namespace Weilog.Services
             _unitOfWork = unitOfWork;
             _userRepository = userRepository;
         }
-        
+
         #endregion
-       
+
         #region Methods...
-        
+
         /// <summary>
         /// 将指定的 <see cref="User"/> 实体对象插入到数据库。
         /// </summary>
@@ -100,7 +100,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityDeleted(user);
             return _unitOfWork.SaveChanges();
         }
-        
+
         /// <summary>
         /// 删除指定唯一编号的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -117,7 +117,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityDeleted(user);
             return _unitOfWork.SaveChanges();
         }
-                
+
         /// <summary>
         /// 更新指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -138,7 +138,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityUpdated(user);
             return _unitOfWork.SaveChanges();
         }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -150,7 +150,7 @@ namespace Weilog.Services
         //      _userRepository.RemoveUser(user);
         //      _unitOfWork.SaveChanges();
         // }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -161,7 +161,7 @@ namespace Weilog.Services
         //      _userRepository.RemoveUser(id);
         //      _unitOfWork.SaveChanges();
         // }
-            
+
         /// <summary>
         /// 查询指定编号的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -173,7 +173,19 @@ namespace Weilog.Services
                 throw new ArgumentNullException("id");
             return _userRepository.GetUser(id);
         }
-        
+
+        /// <summary>
+        /// 查询指定编号的 <see cref="User"/> 实体对象。
+        /// </summary>
+        /// <param name="id">指定的 <see cref="User"/> 实体对象编号。</param>
+        /// <returns>返回若存在则查询的 <see cref="User"/> 实体对象，否则返回 Null。</returns>
+        public User GetUserByUsername(string username)
+        {
+            if (username == null)
+                throw new ArgumentNullException("username");
+            return _userRepository.Queryable().Where(u => u.Username == username).FirstOrDefault();
+        }
+
         /// <summary>
         /// 获取 <see cref="IList{User}"/> 的数据集合。
         /// </summary>
@@ -191,7 +203,7 @@ namespace Weilog.Services
             var userList = new PagedList<User>(query, pageIndex, pageSize);
             return userList;
         }
-        
+
         #endregion
     }
 }

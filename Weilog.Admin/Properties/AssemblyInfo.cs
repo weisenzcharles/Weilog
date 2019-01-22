@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Weilog.Admin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Weilog Team")]
 [assembly: AssemblyProduct("Weilog.Admin")]
-[assembly: AssemblyCopyright("版权所有(C)  2019")]
+[assembly: AssemblyCopyright("Copyright © 2010-2018 Weilog. All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

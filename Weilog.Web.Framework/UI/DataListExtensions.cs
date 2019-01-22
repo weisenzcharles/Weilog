@@ -7,8 +7,20 @@ using System.Web.WebPages;
 
 namespace Nop.Web.Framework.UI
 {
+    /// <summary>
+    /// 数据列表扩展类。
+    /// </summary>
     public static class DataListExtensions
     {
+        /// <summary>
+        /// 数据列表。
+        /// </summary>
+        /// <typeparam name="T">数据对象类型。</typeparam>
+        /// <param name="helper">支持在视图中呈现 HTML 控件。</param>
+        /// <param name="items">数据对象集合。</param>
+        /// <param name="columns"></param>
+        /// <param name="template"></param>
+        /// <returns></returns>
         public static IHtmlString DataList<T>(this HtmlHelper helper, IEnumerable<T> items, int columns,
             Func<T, HelperResult> template) 
             where T : class
