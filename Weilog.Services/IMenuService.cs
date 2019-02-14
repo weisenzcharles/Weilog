@@ -74,10 +74,17 @@ namespace Weilog.Services
         /// <returns>返回若存在则查询的 <see cref="Menu"/> 实体对象，否则返回 Null。</returns>
         Menu GetMenu(int id);
 
-        
+        /// <summary>
+        /// 获取指定用户的菜单。
+        /// </summary>
+        /// <param name="userId">用户编号。</param>
+        /// <returns><see cref="IList{Menu}"/> 的数据集合</returns>
+        IList<Menu> GetMenusByUser(int userId);
+
         /// <summary>
         /// 获取 <see cref="IList{Menu}"/> 的数据集合。
         /// </summary>
+        /// <returns><see cref="IList{Menu}"/> 的数据集合</returns>
         IList<Menu> GetMenuList();
 
         /// <summary>

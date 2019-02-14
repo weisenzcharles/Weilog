@@ -98,7 +98,17 @@ namespace Weilog.Repositories
         {
             return _repository.Get(id);
         }
-        
+
+        /// <summary>
+        /// 获取指定用户的菜单。
+        /// </summary>
+        /// <param name="userId">用户编号。</param>
+        /// <returns><see cref="IList{Menu}"/> 的数据集合</returns>
+        public IList<Menu> GetMenusByUser(int userId)
+        {
+            return _repository.Queryable().ToList();
+        }
+
         /// <summary>
         /// 获取 <see cref="IList{Menu}"/> 的数据集合。
         /// </summary>

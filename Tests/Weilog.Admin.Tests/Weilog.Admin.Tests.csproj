@@ -86,9 +86,17 @@
       <Project>{73a1100f-6034-45cb-8de9-e8ea47a7a3d2}</Project>
       <Name>Weilog.Admin</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Weilog.Services\Weilog.Services.csproj">
+      <Project>{0DCD268A-31DC-4BD3-874D-93BE9BEFEC7A}</Project>
+      <Name>Weilog.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Weilog.Web.Framework\Weilog.Web.Framework.csproj">
       <Project>{32853F5E-C599-4E6C-9DD0-C0A13D5CFFCA}</Project>
       <Name>Weilog.Web.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Weilog.Tests\Weilog.Tests.csproj">
+      <Project>{32A46D90-8417-477F-9D3C-8DB08674CB5B}</Project>
+      <Name>Weilog.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

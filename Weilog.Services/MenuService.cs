@@ -23,9 +23,9 @@ namespace Weilog.Services
     /// <summary>
     /// Weilog 内容管理系统 <see cref="Menu"/> 业务服务类。
     /// </summary>
-     public partial class MenuService : IMenuService
-     {
-     
+    public partial class MenuService : IMenuService
+    {
+
         #region Constants...
 
         #endregion
@@ -38,9 +38,9 @@ namespace Weilog.Services
         private readonly ICacheManager _cacheManager;
 
         #endregion
-        
+
         #region Ctor...
-     
+
         /// <summary>
         /// 初始化 <see cref="MenuService"/> 类的新实例。
         /// </summary>
@@ -58,11 +58,11 @@ namespace Weilog.Services
             _unitOfWork = unitOfWork;
             _menuRepository = menuRepository;
         }
-        
+
         #endregion
-       
+
         #region Methods...
-        
+
         /// <summary>
         /// 将指定的 <see cref="Menu"/> 实体对象插入到数据库。
         /// </summary>
@@ -100,7 +100,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityDeleted(menu);
             return _unitOfWork.SaveChanges();
         }
-        
+
         /// <summary>
         /// 删除指定唯一编号的 <see cref="Menu"/> 实体对象。
         /// </summary>
@@ -117,7 +117,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityDeleted(menu);
             return _unitOfWork.SaveChanges();
         }
-                
+
         /// <summary>
         /// 更新指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
@@ -138,7 +138,7 @@ namespace Weilog.Services
             //_eventPublisher.EntityUpdated(menu);
             return _unitOfWork.SaveChanges();
         }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
@@ -150,7 +150,7 @@ namespace Weilog.Services
         //      _menuRepository.RemoveMenu(menu);
         //      _unitOfWork.SaveChanges();
         // }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="Menu"/> 实体对象。
         /// </summary>
@@ -161,7 +161,7 @@ namespace Weilog.Services
         //      _menuRepository.RemoveMenu(id);
         //      _unitOfWork.SaveChanges();
         // }
-            
+
         /// <summary>
         /// 查询指定编号的 <see cref="Menu"/> 实体对象。
         /// </summary>
@@ -173,7 +173,24 @@ namespace Weilog.Services
                 throw new ArgumentNullException("id");
             return _menuRepository.GetMenu(id);
         }
-        
+
+        /// <summary>
+        /// 获取指定用户的菜单。
+        /// </summary>
+        /// <param name="userId">用户编号。</param>
+        /// <returns><see cref="IList{Menu}"/> 的数据集合</returns>
+        public IList<Menu> GetMenusByUser(int userId)
+        {
+            // 获取我的角色
+            var userRoles = _unitOfWork.Repository<UserRoles>().Queryable().Where(item => !item.Deleted && item.UserId == userId);
+            var roleIds = userRoles.Select(item => item.RoleId).Distinct();
+            // 获取我的角色权限
+            var roleMenus = _unitOfWork.Repository<RoleMenu>().Queryable().Where(item => !item.Deleted && roleIds.Contains(item.RoleId));
+            var menuIds = roleMenus.Select(item => item.MenuId).Distinct();
+
+            return _unitOfWork.Repository<Menu>().Queryable().Where(item => !item.Deleted && menuIds.Contains(item.Id)).ToList();
+        }
+
         /// <summary>
         /// 获取 <see cref="IList{Menu}"/> 的数据集合。
         /// </summary>
@@ -191,7 +208,7 @@ namespace Weilog.Services
             var menuList = new PagedList<Menu>(query, pageIndex, pageSize);
             return menuList;
         }
-        
+
         #endregion
     }
 }

@@ -105,24 +105,26 @@ input, select, textarea {
     font-family: 'Source Sans Pro', sans-serif;
     color: #767676;
 }
+
 table tr {
     cursor: default;
     moz-user-select: -moz-none;
     -moz-user-select: none;
-    -o-user-select:none;
-    -khtml-user-select:none;
-    -webkit-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-    a:focus, a:active, a:hover {
-        outline: none;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-        text-decoration: none;
-        color: #7cd8a9;
-    }
+
+a:focus, a:active, a:hover {
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: #7cd8a9;
+}
 
 h1, h2, h3, h4, h5 {
     font-family: 'Source Sans Pro', sans-serif;
@@ -251,8 +253,9 @@ h1, h2, h3, h4, h5 {
 -----------------------*/
 
 .sidebar-left {
+    position: fixed;
     width: 240px;
-    position: absolute;
+    /*position: absolute;*/
     top: 50px;
     left: 0;
 }
@@ -272,6 +275,12 @@ h1, h2, h3, h4, h5 {
 
 .sidebar-left-info {
     padding: 0px;
+    /*position: fixed;*/
+    top: 60px;
+    left: 0;
+    /*width: 240px;*/
+    /*padding: 0 20px;
+    margin-bottom: 10px;*/
 }
 
 .sidebar-left .search-content {
@@ -365,7 +374,7 @@ h1, h2, h3, h4, h5 {
 
 .side-navigation li .fa, .side-navigation li .ico {
     font-size: 14px;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     margin-right: 10px;
     width: 16px;
     text-align: center;
@@ -686,13 +695,17 @@ h5.left-nav-title {
 
 
 .sidebar-widget {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding: 0 20px;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
+    width: 240px;
 }
 
     .sidebar-widget h4 {
         font-size: 11px;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         color: rgba(255,255,255,0.6);
         margin-bottom: 10px;
         padding-top: 10px;
@@ -1466,7 +1479,7 @@ a.btn-view-all {
 .body-content {
     margin-left: 240px;
     background: #f3f3f3;
-    min-height: 900px;
+    /*min-height: 900px;*/
     position: relative;
 }
 
@@ -1493,13 +1506,13 @@ a.btn-view-all {
 -------------------*/
 
 .page-head {
-    padding: 20px;
+    padding: 10px 20px;
     background: #e8e8e8;
     position: relative;
 }
 
     .page-head h3 {
-        margin-top: 0;
+        margin-top: 10px;
         font-size: 20px;
         font-weight: 300;
     }

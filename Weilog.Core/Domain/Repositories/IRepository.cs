@@ -50,6 +50,7 @@ namespace Weilog.Core.Domain.Repositories
         /// </summary>
         /// <returns><see cref="IQueryable{TEntity}"/> 的数据集合。</returns>
         IQueryable<TEntity> Queryable();
+
         IRepository<T> GetRepository<T>() where T : class, IObjectState;
     }
 }

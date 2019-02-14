@@ -52,7 +52,7 @@ namespace Weilog.Repositories
         {
             _repository.Delete(entity);
         }
-        
+
         /// <summary>
         /// 删除指定唯一编号的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -61,7 +61,7 @@ namespace Weilog.Repositories
         {
             _repository.Delete(id);
         }
-                
+
         /// <summary>
         /// 更新指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -70,7 +70,7 @@ namespace Weilog.Repositories
         {
             _repository.Update(entity);
         }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -79,7 +79,7 @@ namespace Weilog.Repositories
         // {
         //     _repository.Delete(entity);
         // }
-        
+
         /// <summary>
         /// 移除指定的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -88,7 +88,7 @@ namespace Weilog.Repositories
         // {
         //     _repository.Delete(id);
         // }
-            
+
         /// <summary>
         /// 查询指定编号的 <see cref="User"/> 实体对象。
         /// </summary>
@@ -98,7 +98,7 @@ namespace Weilog.Repositories
         {
             return _repository.Get(id);
         }
-        
+
         /// <summary>
         /// 获取 <see cref="IList{User}"/> 的数据集合。
         /// </summary>
@@ -106,15 +106,15 @@ namespace Weilog.Repositories
         {
             return _repository.Queryable().ToList();
         }
-        
+
         /// <summary>
         /// 获取 <see cref="IQueryable{User}"/> 的数据集合。
         /// </summary>
         public IQueryable<User> Queryable()
         {
-            return _repository.Queryable();
+            return _repository.Queryable().OrderBy(entity => entity.Id);
         }
-        
+
         #endregion
     }
 }

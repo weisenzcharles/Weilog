@@ -3,12 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Weilog.Core.Domain.Repositories;
+using Weilog.Core.Domain.Uow;
+using Weilog.Entities;
+using Weilog.Services;
 using Weilog.Web.Framework.Controllers;
 
 namespace Weilog.Web.Areas.Admin.Controllers
 {
     public class MenuController : BaseAdminController
     {
+        #region Fields...
+
+        private readonly IUnitOfWorkAsync _unitOfWork;
+        private readonly IMenuService _menuService;
+        private readonly IRepositoryAsync<Menu> _repository;
+
+        #endregion
+
+        #region Constructor...
+
+        /// <summary>
+        /// 初始化 <see cref="MenuController"/> 类的新实例。
+        /// </summary>
+        public MenuController(IUnitOfWorkAsync unitOfWork, IMenuService menuService, IRepositoryAsync<Menu> menuRepository)
+        {
+            _unitOfWork = unitOfWork;
+            _repository = menuRepository;
+            _menuService = menuService;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 侧边栏菜单。
+        /// </summary>
+        /// <returns>视图响应结果。</returns>
+        public ActionResult SidebarMenu()
+        {
+            _menuService.GetMenu
+            return View();
+        }
+
         // GET: Admin/Menu
         public ActionResult Index()
         {
