@@ -181,14 +181,14 @@ namespace Weilog.Services
         /// <returns><see cref="IList{Menu}"/> 的数据集合</returns>
         public IList<Menu> GetMenusByUser(int userId)
         {
-            // 获取我的角色
+            // 获取用户的角色
             var userRoles = _unitOfWork.Repository<UserRoles>().Queryable().Where(item => !item.Deleted && item.UserId == userId);
             var roleIds = userRoles.Select(item => item.RoleId).Distinct();
-            // 获取我的角色权限
+            // 获取用户的角色权限
             var roleMenus = _unitOfWork.Repository<RoleMenu>().Queryable().Where(item => !item.Deleted && roleIds.Contains(item.RoleId));
             var menuIds = roleMenus.Select(item => item.MenuId).Distinct();
 
-            return _unitOfWork.Repository<Menu>().Queryable().Where(item => !item.Deleted && menuIds.Contains(item.Id)).ToList();
+            return _unitOfWork.Repository<Menu>().Queryable().Where(item => !item.Deleted && menuIds.Contains(item.Id)).OrderBy(m => m.OrderIndex).ToList();
         }
 
         /// <summary>

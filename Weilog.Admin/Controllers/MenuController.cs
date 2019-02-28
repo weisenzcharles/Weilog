@@ -41,7 +41,7 @@ namespace Weilog.Web.Areas.Admin.Controllers
         /// <returns>视图响应结果。</returns>
         public ActionResult SidebarMenu()
         {
-            _menuService.GetMenu
+            //_menuService.GetMenu
             return View();
         }
 
