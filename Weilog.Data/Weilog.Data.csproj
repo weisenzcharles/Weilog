@@ -72,6 +72,7 @@
     <Compile Include="DataContext\ModelConfiguration.cs" />
     <Compile Include="DataContext\SQLiteDbContext.cs" />
     <Compile Include="DataContext\SQLiteDbInitializer.cs" />
+    <Compile Include="DataContext\WeilogDropCreateDatabaseIfModelChanges.cs" />
     <Compile Include="Mapping\CategoryMap.cs" />
     <Compile Include="Mapping\LinkMap.cs" />
     <Compile Include="Mapping\MenuMap.cs" />

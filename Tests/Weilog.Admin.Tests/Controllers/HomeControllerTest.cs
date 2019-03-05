@@ -16,7 +16,7 @@ namespace Weilog.Admin.Tests.Controllers
     [TestFixture]
     public class HomeControllerTest : TestsBase
     {
-        private IUserService _userService;
+        private IUserService _userService = null ;
         public override void SetUp()
         {
             //_userService = MockRepository.GenerateMock<IUserService>();

@@ -47,7 +47,7 @@ namespace Weilog.Web.Controllers
                 Password = "password" + DateTime.Now.Millisecond,
                 CreatedTime = DateTime.Now,
                 Email = "master" + DateTime.Now.Millisecond + "@weilog.net",
-                Status = true,
+                Status = UserStatus.Normal,
                 Nicename = "userNicename" + DateTime.Now.Millisecond,
                 Deleted = false
             };
@@ -60,7 +60,7 @@ namespace Weilog.Web.Controllers
                 Password = "password2" + DateTime.Now.Millisecond,
                 CreatedTime = DateTime.Now,
                 Email = "master2" + DateTime.Now.Millisecond + "@weilog.net",
-                Status = true,
+                Status =  UserStatus.Normal,
                 Nicename = "user2Nicename" + DateTime.Now.Millisecond,
                 Deleted = false
             };

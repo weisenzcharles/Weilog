@@ -126,11 +126,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="AdminAreaRegistration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -608,6 +603,8 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Update.cshtml" />
     <Content Include="Views\Menu\List.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\Web.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

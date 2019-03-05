@@ -33,7 +33,7 @@ namespace Weilog.Entities
         /// <summary>
         /// 状态。
         /// </summary>
-        public bool Status { get; set; }
+        public UserStatus Status { get; set; }
 
         /// <summary>
         /// 用户角色。

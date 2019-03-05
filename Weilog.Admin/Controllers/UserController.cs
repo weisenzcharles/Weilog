@@ -57,7 +57,7 @@ namespace Weilog.Web.Areas.Admin.Controllers
                 Password = "password" + DateTime.Now.Millisecond,
                 CreatedTime = DateTime.Now,
                 Email = "master" + DateTime.Now.Millisecond + "@weilog.net",
-                Status = true,
+                Status = UserStatus.Normal,
                 Nicename = "userNicename" + DateTime.Now.Millisecond,
                 Deleted = false
             };
@@ -90,11 +90,12 @@ namespace Weilog.Web.Areas.Admin.Controllers
             bool result = false;
             try
             {
-                var user = _userService.GetUser(1);
+                var user = _userService.GetUserByUsername(userModel.Username);
                 if (user == null)
                 {
+                    ModelState.AddModelError("Error", "无效的用户");
+                    //res.msg = "无效的用户";
                 }
-                //res.msg = "无效的用户";
                 else
                 {
                     ////记录登录日志
@@ -107,21 +108,20 @@ namespace Weilog.Web.Areas.Admin.Controllers
                     //});
                     if (user.Password != userModel.Password.ToMD5())
                     {
+                        // 密码错误
+                        ModelState.AddModelError("Error", "登录密码错误");
                     }
-                    //res.msg = "登录密码错误";
                     else if (user.Deleted)
-                    { }
-                    //res.msg = "用户已被删除";
-                    //else if (user.Status == UserStatus.未激活)
-                    //    res.msg = "账号未被激活";
-                    //else if (user.Status == UserStatus.禁用)
-                    //    res.msg = "账号被禁用";
+                    {
+                        ModelState.AddModelError("Error", "用户已被删除");
+                    }
+                    else if (user.Status == UserStatus.NotActivated)
+                        ModelState.AddModelError("Error", "账号未激活");
+                    else if (user.Status == UserStatus.Disabled)
+                        ModelState.AddModelError("Error", "账号已被禁用");
                     else
                     {
-                        //res.flag = true;
-                        //res.msg = "登录成功";
-                        //res.data = user;
-
+                        result = true;
                         //写入注册信息
                         DateTime expiration = true
                             ? DateTime.Now.AddDays(7)
@@ -141,6 +141,8 @@ namespace Weilog.Web.Areas.Admin.Controllers
                             Expires = expiration
                         };
 
+                        //FormsAuthentication.SetAuthCookie(userModel.Username, userModel.RememberMe);
+
 #if !DEBUG
                 cookie.Domain = FormsAuthentication.CookieDomain;
 #endif
@@ -156,12 +158,10 @@ namespace Weilog.Web.Areas.Admin.Controllers
                 //res.msg = ex.Message;
                 //Logger.Log(ex.Message, ex);
             }
-
             if (result)
             {
                 return RedirectToAction("Index", "Home");
             }
-            ModelState.AddModelError("Error", new Exception());
             return View();
         }
 

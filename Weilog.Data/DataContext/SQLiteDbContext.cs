@@ -22,6 +22,7 @@ namespace Weilog.Data.DataContext
 
         #region Constructors
 
+        ///*public*/ SQLiteDbContext() { }
         ///// <summary>
         ///// Constructs a new context instance using conventions to create the name of the
         ///// database to which a connection will be made. The by-convention name is the full
@@ -90,7 +91,7 @@ namespace Weilog.Data.DataContext
             //Database.SetInitializer(initializer);
             Database.SetInitializer<SQLiteDbContext>(null);
             Database.SetInitializer(new SqliteDropCreateDatabaseWhenModelChanges<SQLiteDbContext>(modelBuilder));
-
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SQLiteDbContext, SQLiteDbInitializer>());
             // dynamically load all configuration
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
             .Where(type => !String.IsNullOrEmpty(type.Namespace))
