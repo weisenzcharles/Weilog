@@ -1,2 +1,2 @@
 # weilog
-The Weilog CMS source code.
+The weilog blog source code.
