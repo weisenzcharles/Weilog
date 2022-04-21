@@ -12,13 +12,16 @@ spring:
     url: jdbc:mysql://192.168.0.86:3306/blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
   jpa:
     hibernate:
-      ddl-auto: update
-    generate-ddl: true
-    show-sql: true
+      dialect:
+        storage_engine: InnoDB  # 配置开启 InnoDB 引擎
+      ddl-auto: update  # 配置自动更新表结构
+    generate-ddl: true  # 配置生成数据库表结构
+    show-sql: true  # 配置显示 SQL 语句
+    database-platform: org.hibernate.dialect.MySQL57Dialect # 配置使用 MySQL 5.7 版本
   thymeleaf:
-    mode: HTML
+    mode: HTML  # 配置使用 HTML 模式
 logging:
   level:
-    root: info
-    org.charles.weilog: debug
-  file: logs/weilog.log
+    root: info  # 配置日志级别
+    org.charles.weilog: debug # 配置项目日志级别
+  file: logs/weilog.log # 配置日志文件
