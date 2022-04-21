@@ -1,14 +1,13 @@
 package org.charles.weilog.repository;
 
-import org.charles.weilog.domain.Post;
+import org.charles.weilog.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 /**
- * 文章数据库操作接口。
+ * 标签数据仓库。
  *
  * @author Charles
  */
-public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificationExecutor<Post> {
-
+public interface PageRepository extends JpaRepository<Page, Long>, JpaSpecificationExecutor<Page> {
 }
