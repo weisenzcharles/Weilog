@@ -1,12 +1,24 @@
 package org.charles.weilog.service;
 
 import org.charles.weilog.domain.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
+    @Override
+    public Page<Post> listPost(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<Post> listPost(Pageable pageable, String query) {
+        return null;
+    }
+
     @Override
     public boolean add(Post tag) {
         return false;
