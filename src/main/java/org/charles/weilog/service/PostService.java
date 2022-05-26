@@ -1,19 +1,26 @@
 package org.charles.weilog.service;
 
 import org.charles.weilog.domain.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface PostService {
-    public boolean add(Post tag);
 
-    public boolean remove(Long id);
+    Page<Post> listPost(Pageable pageable);
 
-    public boolean update(Post tag);
+    Page<Post> listPost(Pageable pageable, String query);
 
-    public Post query(Long id);
+    boolean add(Post tag);
 
-    public List<Post> query(String title, int pageIndex, int pageSize);
+    boolean remove(Long id);
 
-    public List<Post> query(int pageIndex, int pageSize);
+    boolean update(Post tag);
+
+    Post query(Long id);
+
+    List<Post> query(String title, int pageIndex, int pageSize);
+
+    List<Post> query(int pageIndex, int pageSize);
 }

@@ -5,15 +5,15 @@ import org.charles.weilog.domain.Page;
 import java.util.List;
 
 public interface PageService {
-    public boolean add(Page tag);
+    boolean add(Page tag);
 
-    public boolean remove(Long id);
+    boolean remove(Long id);
 
-    public boolean update(Page tag);
+    boolean update(Page tag);
 
-    public Page query(Long id);
+    Page query(Long id);
 
-    public List<Page> query(String title, int pageIndex, int pageSize);
+    List<Page> query(String title, int pageIndex, int pageSize);
 
-    public List<Page> query(int pageIndex, int pageSize);
+    List<Page> query(int pageIndex, int pageSize);
 }

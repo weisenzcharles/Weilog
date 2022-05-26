@@ -5,15 +5,16 @@ import org.charles.weilog.domain.Metadata;
 import java.util.List;
 
 public interface MetadataService {
-    public boolean add(Metadata tag);
 
-    public boolean remove(Long id);
+    boolean add(Metadata tag);
 
-    public boolean update(Metadata tag);
+    boolean remove(Long id);
 
-    public Metadata query(Long id);
+    boolean update(Metadata tag);
 
-    public List<Metadata> query(String title, int pageIndex, int pageSize);
+    Metadata query(Long id);
 
-    public List<Metadata> query(int pageIndex, int pageSize);
+    List<Metadata> query(String title, int pageIndex, int pageSize);
+
+    List<Metadata> query(int pageIndex, int pageSize);
 }

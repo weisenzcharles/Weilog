@@ -1,6 +1,7 @@
-package org.charles.weilog.service;
+package org.charles.weilog.service.impl;
 
 import org.charles.weilog.domain.Category;
+import org.charles.weilog.service.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
