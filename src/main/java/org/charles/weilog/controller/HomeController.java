@@ -1,45 +1,39 @@
 package org.charles.weilog.controller;
 
 import org.charles.weilog.domain.Tag;
-import org.charles.weilog.service.PostService;
 import org.charles.weilog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class HomeController {
 
     @Autowired
-    private PostService postService;
-    @Autowired
     private TagService tagService;
 
     @GetMapping("/")
-    public String Index(@PageableDefault(size = 10, sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable, Model model) {
-        model.addAttribute("page", postService.listPost(pageable));
-//            model.addAttribute("recommend_posts", postService.listType(10));
-//            model.addAttribute("types", typeService.listTypeTop(6));
-//            model.addAttribute("tags", tagService.listTag(10));
-//        List<Type> types = typeService.listTypeTop(7);
-        List<Tag> tags = tagService.query(1, 10);
-        //User user = (User)session.getAttribute("user");
-//        PageInfo<Post> postPageInfo = postService.listPostByPostWithTypeWithUser(pageNum, 5,null);
+    public String toIndexPage(@RequestParam(name = "pageNum",defaultValue = "1",required = false)
+                                      Integer pageNum, Model model, HttpSession session){
 
-        //List<Post> postList = postPageInfo.getList();
+//        List<Type> types = typeService.listTypeTop(7);
+        List<Tag> tags = tagService.query(1,10);
+        //User user = (User)session.getAttribute("user");
+//        PageInfo<Blog> blogPageInfo = blogService.listBlogByBlogWithTypeWithUser(pageNum, 5,null);
+
+        //List<Blog> blogList = blogPageInfo.getList();
         //
-        //postPageInfo.setList(postList);
+        //blogPageInfo.setList(blogList);
 
 //        model.addAttribute("types",types);
-        model.addAttribute("tags", tags);
-//        model.addAttribute("postPageInfo",postPageInfo);
-//        System.out.println(postPageInfo);
+        model.addAttribute("tags",tags);
+//        model.addAttribute("blogPageInfo",blogPageInfo);
+//        System.out.println(blogPageInfo);
         return "index";
     }
 
