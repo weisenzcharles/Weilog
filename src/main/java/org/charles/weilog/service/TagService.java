@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface TagService {
 
-    public boolean add(Tag tag);
+    boolean add(Tag tag);
 
-    public boolean remove(Long id);
+    boolean remove(Long id);
 
-    public boolean update(Tag tag);
+    boolean update(Tag tag);
 
-    public Tag query(Long id);
+    Tag query(Long id);
 
-    public List<Tag> query(String tag);
+    List<Tag> query(String tag);
 
-    public List<Tag> query(int pageIndex, int pageSize);
+    List<Tag> query(int pageIndex, int pageSize);
 }
