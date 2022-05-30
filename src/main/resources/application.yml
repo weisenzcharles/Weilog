@@ -24,4 +24,4 @@ logging:
   level:
     root: info  # 配置日志级别
     org.charles.weilog: debug # 配置项目日志级别
-  file: logs/weilog.log # 配置日志文件
+    file: logs/weilog.log # 配置日志文件
