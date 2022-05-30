@@ -1,19 +1,19 @@
 package org.charles.weilog.service;
 
-import org.charles.weilog.domain.Category;
+import org.charles.weilog.domain.Taxonomy;
 
 import java.util.List;
 
 public interface CategoryService {
-    boolean add(Category tag);
+    boolean add(Taxonomy tag);
 
     boolean remove(Long id);
 
-    boolean update(Category tag);
+    boolean update(Taxonomy tag);
 
-    Category query(Long id);
+    Taxonomy query(Long id);
 
-    List<Category> query(String title, int pageIndex, int pageSize);
+    List<Taxonomy> query(String title, int pageIndex, int pageSize);
 
-    List<Category> query(int pageIndex, int pageSize);
+    List<Taxonomy> query(int pageIndex, int pageSize);
 }

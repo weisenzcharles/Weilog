@@ -16,7 +16,7 @@
       <h2 class="ui teal header item">Blog</h2>
       <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
       <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-      <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+      <a href="#" class="m-item item m-mobile-hide"><i class="mini terms icon"></i>标签</a>
       <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
       <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
       <div class="right m-item item m-mobile-hide">
@@ -50,13 +50,13 @@
 <br>
 
   <div>
-    <div th:utext="'&lt;!--'" th:remove="tag"></div>
-    <div th:utext="'Failed Request URL : ' + ${url}" th:remove="tag"></div>
-    <div th:utext="'Exception message : ' + ${exception.message}" th:remove="tag"></div>
-    <ul th:remove="tag">
-      <li th:each="st : ${exception.stackTrace}" th:remove="tag"><span th:utext="${st}" th:remove="tag"></span></li>
+    <div th:utext="'&lt;!--'" th:remove="term"></div>
+    <div th:utext="'Failed Request URL : ' + ${url}" th:remove="term"></div>
+    <div th:utext="'Exception message : ' + ${exception.message}" th:remove="term"></div>
+    <ul th:remove="term">
+      <li th:each="st : ${exception.stackTrace}" th:remove="term"><span th:utext="${st}" th:remove="term"></span></li>
     </ul>
-    <div th:utext="'--&gt;'" th:remove="tag"></div>
+    <div th:utext="'--&gt;'" th:remove="term"></div>
   </div>
 <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
   <div class="ui center aligned container">

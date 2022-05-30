@@ -1,6 +1,6 @@
 package org.charles.weilog.service.impl;
 
-import org.charles.weilog.domain.Post;
+import org.charles.weilog.domain.Posts;
 import org.charles.weilog.service.PostService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,8 +14,8 @@ import java.util.function.Function;
 @Service
 public class PostServiceImpl implements PostService {
     @Override
-    public Page<Post> listPost(Pageable pageable) {
-        return new Page<Post>() {
+    public Page<Posts> listPost(Pageable pageable) {
+        return new Page<Posts>() {
             @Override
             public int getTotalPages() {
                 return 0;
@@ -27,7 +27,7 @@ public class PostServiceImpl implements PostService {
             }
 
             @Override
-            public <U> Page<U> map(Function<? super Post, ? extends U> function) {
+            public <U> Page<U> map(Function<? super Posts, ? extends U> function) {
                 return null;
             }
 
@@ -47,7 +47,7 @@ public class PostServiceImpl implements PostService {
             }
 
             @Override
-            public List<Post> getContent() {
+            public List<Posts> getContent() {
                 return null;
             }
 
@@ -92,19 +92,19 @@ public class PostServiceImpl implements PostService {
             }
 
             @Override
-            public Iterator<Post> iterator() {
+            public Iterator<Posts> iterator() {
                 return null;
             }
         };
     }
 
     @Override
-    public Page<Post> listPost(Pageable pageable, String query) {
+    public Page<Posts> listPost(Pageable pageable, String query) {
         return null;
     }
 
     @Override
-    public boolean add(Post tag) {
+    public boolean add(Posts tag) {
         return false;
     }
 
@@ -114,22 +114,22 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public boolean update(Post tag) {
+    public boolean update(Posts tag) {
         return false;
     }
 
     @Override
-    public Post query(Long id) {
+    public Posts query(Long id) {
         return null;
     }
 
     @Override
-    public List<Post> query(String title, int pageIndex, int pageSize) {
+    public List<Posts> query(String title, int pageIndex, int pageSize) {
         return null;
     }
 
     @Override
-    public List<Post> query(int pageIndex, int pageSize) {
+    public List<Posts> query(int pageIndex, int pageSize) {
         return null;
     }
 }

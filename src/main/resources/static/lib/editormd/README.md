@@ -4,7 +4,7 @@
 
 ![](https://img.shields.io/github/stars/pandao/editor.md.svg)
 ![](https://img.shields.io/github/forks/pandao/editor.md.svg)
-![](https://img.shields.io/github/tag/pandao/editor.md.svg)
+![](https://img.shields.io/github/term/pandao/editor.md.svg)
 ![](https://img.shields.io/github/release/pandao/editor.md.svg)
 ![](https://img.shields.io/github/issues/pandao/editor.md.svg)
 ![](https://img.shields.io/bower/v/editor.md.svg)
@@ -17,7 +17,7 @@
 - Full-featured: Real-time Preview, Image (cross-domain) upload, Preformatted text/Code blocks/Tables insert, Code fold, Search replace, Read only, Themes, Multi-languages, L18n, HTML entities, Code syntax highlighting...;
 - Markdown Extras : Support [ToC (Table of Contents)](https://pandao.github.io/editor.md/examples/toc.html), [Emoji](https://pandao.github.io/editor.md/examples/emoji.html), [Task lists](https://pandao.github.io/editor.md/examples/task-lists.html), [@Links](https://pandao.github.io/editor.md/examples/@links.html)...;
 - Compatible with all major browsers (IE8+), compatible Zepto.js and iPad;
-- Support [decode & fliter of the HTML tags & attributes](https://pandao.github.io/editor.md/examples/html-tags-decode.html);
+- Support [decode & fliter of the HTML terms & attributes](https://pandao.github.io/editor.md/examples/html-terms-decode.html);
 - Support [TeX (LaTeX expressions, Based on KaTeX)](https://pandao.github.io/editor.md/examples/katex.html), [Flowchart](https://pandao.github.io/editor.md/examples/flowchart.html) and [Sequence Diagram](https://pandao.github.io/editor.md/examples/sequence-diagram.html) of Markdown extended syntax;
 - Support AMD/CMD (Require.js & Sea.js) Module Loader, and Custom/define editor plugins;
 
@@ -36,7 +36,7 @@
 - 支持实时预览、图片（跨域）上传、预格式文本/代码/表格插入、代码折叠、跳转到行、搜索替换、只读模式、自定义样式主题和多语言语法高亮等功能；
 - 支持 [ToC（Table of Contents）](https://pandao.github.io/editor.md/examples/toc.html)、[Emoji表情](https://pandao.github.io/editor.md/examples/emoji.html)、[Task lists](https://pandao.github.io/editor.md/examples/task-lists.html)、[@链接](https://pandao.github.io/editor.md/examples/@links.html)等 Markdown 扩展语法；
 - 支持 TeX 科学公式（基于 [KaTeX](https://pandao.github.io/editor.md/examples/katex.html)）、流程图 [Flowchart](https://pandao.github.io/editor.md/examples/flowchart.html) 和 [时序图 Sequence Diagram](https://pandao.github.io/editor.md/examples/sequence-diagram.html);
-- 支持[识别和解析 HTML 标签，并且支持自定义过滤标签及属性解析](https://pandao.github.io/editor.md/examples/html-tags-decode.html)，具有可靠的安全性和几乎无限的扩展性；
+- 支持[识别和解析 HTML 标签，并且支持自定义过滤标签及属性解析](https://pandao.github.io/editor.md/examples/html-terms-decode.html)，具有可靠的安全性和几乎无限的扩展性；
 - 支持 AMD / CMD 模块化加载（支持 [Require.js](https://pandao.github.io/editor.md/examples/use-requirejs.html) & [Sea.js](https://pandao.github.io/editor.md/examples/use-seajs.html)），并且支持[自定义扩展插件](https://pandao.github.io/editor.md/examples/define-plugin.html)；
 - 兼容主流的浏览器（IE8+）和 [Zepto.js](https://pandao.github.io/editor.md/examples/use-zepto.html)，且支持 iPad 等平板设备；
 
@@ -65,7 +65,7 @@ bower install editor.md
 ```html
 <link rel="stylesheet" href="editor.md/css/editormd.min.css" />
 <div id="editor">
-    <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+    <!-- Tips: Editor.md can auto append a `<textarea>` term -->
     <textarea style="display:none;">### Hello Editor.md !</textarea>
 </div>
 <script src="jquery.min.js"></script>
@@ -103,8 +103,8 @@ If you using modular script loader:
     $(function() {
 	    var testView = editormd.markdownToHTML("test-markdown-view", {
             // markdown : "[TOC]\n### Hello world!\n## Heading 2", // Also, you can dynamic set Markdown text
-            // htmlDecode : true,  // Enable / disable HTML tag encode.
-            // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            // htmlDecode : true,  // Enable / disable HTML term encode.
+            // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML terms for website security.
         });
     });
 </script>    
@@ -167,7 +167,7 @@ Editor.md options and default values:
     dialogMaskBgColor    : "#fff",
     dialogMaskOpacity    : 0.1,
     fontSize             : "13px",
-    saveHTMLToTextarea   : false,          // If enable, Editor will create a <textarea name="{editor-id}-html-code"> tag save HTML code for form post to server-side.
+    saveHTMLToTextarea   : false,          // If enable, Editor will create a <textarea name="{editor-id}-html-code"> term save HTML code for form post to server-side.
     disabledKeyMaps      : [],
     
     onload               : function() {},
@@ -194,7 +194,7 @@ Editor.md options and default values:
     tocDropdown          : false,          // Enable/disable Table Of Contents dropdown menu
     tocContainer         : "",             // Custom Table Of Contents Container Selector
     tocStartLevel        : 1,              // Said from H1 to create ToC
-    htmlDecode           : false,          // Open the HTML tag identification 
+    htmlDecode           : false,          // Open the HTML term identification 
     pageBreak            : true,           // Enable parse page break [========]
     atLink               : true,           // for @link
     emailLink            : true,           // for email address auto link
@@ -219,7 +219,7 @@ Editor.md options and default values:
             return editormd.toolbarHandlers.lowercase;
         }
     },
-    toolbarCustomIcons   : {               // using html tag create toolbar icon, unused default <a> tag.
+    toolbarCustomIcons   : {               // using html term create toolbar icon, unused default <a> term.
         lowercase        : "<a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\"><i class=\"fa\" name=\"lowercase\" style=\"font-size:24px;margin-top: -10px;\">a</i></a>",
         "ucwords"        : "<a href=\"javascript:;\" title=\"ucwords\" unselectable=\"on\"><i class=\"fa\" name=\"ucwords\" style=\"font-size:20px;margin-top: -3px;\">Aa</i></a>"
     },

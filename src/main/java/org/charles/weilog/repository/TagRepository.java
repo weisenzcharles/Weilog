@@ -1,6 +1,6 @@
 package org.charles.weilog.repository;
 
-import org.charles.weilog.domain.Tag;
+import org.charles.weilog.domain.Term;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  * @author Charles
  */
-public interface TagRepository extends JpaRepository<Tag, Long>, JpaSpecificationExecutor<Tag> {
+public interface TagRepository extends JpaRepository<Term, Long>, JpaSpecificationExecutor<Term> {
 }

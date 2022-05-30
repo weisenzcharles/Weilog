@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-public class Tag {
+public class Term {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

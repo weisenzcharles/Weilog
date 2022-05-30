@@ -1,16 +1,16 @@
 package org.charles.weilog.service.impl;
 
-import org.charles.weilog.domain.Tag;
-import org.charles.weilog.service.TagService;
+import org.charles.weilog.domain.Term;
+import org.charles.weilog.service.TermService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TagServiceImpl implements TagService {
+public class TermServiceImpl implements TermService {
 
     @Override
-    public boolean add(Tag tag) {
+    public boolean add(Term term) {
         return false;
     }
 
@@ -20,22 +20,22 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public boolean update(Tag tag) {
+    public boolean update(Term term) {
         return false;
     }
 
     @Override
-    public Tag query(Long id) {
+    public Term query(Long id) {
         return null;
     }
 
     @Override
-    public List<Tag> query(String tag) {
+    public List<Term> query(String tag) {
         return null;
     }
 
     @Override
-    public List<Tag> query(int pageIndex, int pageSize) {
+    public List<Term> query(int pageIndex, int pageSize) {
         return null;
     }
 }

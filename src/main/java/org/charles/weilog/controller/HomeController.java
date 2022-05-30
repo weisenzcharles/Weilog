@@ -1,7 +1,7 @@
 package org.charles.weilog.controller;
 
-import org.charles.weilog.domain.Tag;
-import org.charles.weilog.service.TagService;
+import org.charles.weilog.domain.Term;
+import org.charles.weilog.service.TermService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,14 +15,14 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private TagService tagService;
+    private TermService tagService;
 
     @GetMapping("/")
     public String toIndexPage(@RequestParam(name = "pageNum",defaultValue = "1",required = false)
                                       Integer pageNum, Model model, HttpSession session){
 
 //        List<Type> types = typeService.listTypeTop(7);
-        List<Tag> tags = tagService.query(1,10);
+        List<Term> terms = tagService.query(1,10);
         //User user = (User)session.getAttribute("user");
 //        PageInfo<Blog> blogPageInfo = blogService.listBlogByBlogWithTypeWithUser(pageNum, 5,null);
 
@@ -31,7 +31,7 @@ public class HomeController {
         //blogPageInfo.setList(blogList);
 
 //        model.addAttribute("types",types);
-        model.addAttribute("tags",tags);
+        model.addAttribute("tags", terms);
 //        model.addAttribute("blogPageInfo",blogPageInfo);
 //        System.out.println(blogPageInfo);
         return "index";

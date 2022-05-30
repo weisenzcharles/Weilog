@@ -13,7 +13,7 @@ import java.util.List;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-public class Post {
+public class Posts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Post {
     private User user;
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
-    private List<Tag> tags = new ArrayList<>();
+    private List<Term> terms = new ArrayList<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Comment> comments = new ArrayList<>();

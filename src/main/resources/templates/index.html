@@ -16,7 +16,7 @@
         <h2 class="ui teal header item">Blog</h2>
         <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini terms icon"></i>标签</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
         <div class="right m-item item m-mobile-hide">
@@ -54,7 +54,7 @@
           <div class="ui attached  segment">
 
             <div class="ui padded vertical segment m-padded-tb-large">
-              <div class="ui middle aligned mobile reversed stackable grid" th:each="blog : ${page.content}" >
+              <div class="ui middle aligned mobile reversed stackable grid" th:each="post : ${page.content}" >
                 <div class="eleven wide column">
                   <h3 class="ui header" ><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"  class="m-black" th:text="${blog.title}">你真的理解什么是财富自由吗？</a></h3>
                   <p class="m-text" th:text="|${blog.description}......|">正确做好任何一件事情的前提是清晰、正确的理解目标。而事实是，我们很多人很多时候根本没有对目标正确的定义，甚至根本从来就没有想过，只是大家都那么做而已…...</p>
@@ -156,16 +156,16 @@
             <div class="ui secondary segment">
               <div class="ui two column grid">
                 <div class="column">
-                  <i class="tags icon"></i>标签
+                  <i class="terms icon"></i>标签
                 </div>
                 <div class="right aligned column">
-                  <a href="#" th:href="@{tags/-1}" target="_blank">more <i class="angle double right icon"></i></a>
+                  <a href="#" th:href="@{terms/-1}" target="_blank">more <i class="angle double right icon"></i></a>
                 </div>
               </div>
             </div>
             <div class="ui teal segment">
-              <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
-                <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+              <a href="#" th:href="@{/terms/{id}(id=${term.id})}" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny" th:each="term : ${terms}">
+                <span th:text="${term.name}">方法论</span> <div class="detail" th:text="${#arrays.length(term.blogs)}">23</div>
               </a>
             </div>
           </div>

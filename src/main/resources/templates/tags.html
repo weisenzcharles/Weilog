@@ -16,7 +16,7 @@
         <h2 class="ui teal header item">Blog</h2>
         <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
-        <a href="#" class="active m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="mini terms icon"></i>标签</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
         <a href="#" class="m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
         <div class="right m-item item m-mobile-hide">
@@ -42,14 +42,14 @@
             <h3 class="ui teal header">标签</h3>
           </div>
           <div class="right aligned column">
-            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(tags)}"> 14 </h2> 个
+            共 <h2 class="ui orange header m-inline-block m-text-thin" th:text="${#arrays.length(terms)}"> 14 </h2> 个
           </div>
         </div>
       </div>
 
       <div class="ui attached segment m-padded-tb-large">
-        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"  class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${tags}">
-          <span th:text="${tag.name}">方法论</span> <div class="detail" th:text="${#arrays.length(tag.blogs)}">23</div>
+        <a href="#" th:href="@{/terms/{id}(id=${term.id})}"  class="ui basic left pointing large label m-margin-tb-tiny" th:classappend="${term.id==activeTagId} ? 'teal'" th:each="term : ${terms}">
+          <span th:text="${term.name}">方法论</span> <div class="detail" th:text="${#arrays.length(term.blogs)}">23</div>
         </a>
       </div>
 
@@ -81,7 +81,7 @@
                 </div>
                 <div class="row">
                   <div class="column">
-                    <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" class="ui  basic left pointing label m-padded-mini m-text-thin" th:classappend="${tag.id==activeTagId} ? 'teal'" th:each="tag : ${blog.tags}" th:text="${tag.name}">方法论</a>
+                    <a href="#" th:href="@{/terms/{id}(id=${term.id})}" class="ui  basic left pointing label m-padded-mini m-text-thin" th:classappend="${term.id==activeTagId} ? 'teal'" th:each="term : ${blog.terms}" th:text="${term.name}">方法论</a>
                   </div>
                 </div>
               </div>
@@ -102,10 +102,10 @@
       <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
         <div class="ui middle aligned two column grid">
           <div class="column">
-            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}-1)}"  th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
+            <a href="#" th:href="@{'/terms/'+${activeTagId}(page=${page.number}-1)}"  th:unless="${page.first}" class="ui mini teal basic button">上一页</a>
           </div>
           <div class="right aligned column">
-            <a href="#" th:href="@{'/tags/'+${activeTagId}(page=${page.number}+1)}"  th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
+            <a href="#" th:href="@{'/terms/'+${activeTagId}(page=${page.number}+1)}"  th:unless="${page.last}" class="ui mini teal basic button">下一页</a>
           </div>
         </div>
       </div>

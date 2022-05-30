@@ -17,6 +17,7 @@ public class User {
     private Long id;
     private String name;
     private String password;
+    private String nikename;
     private String email;
     private String phone;
     private String address;
@@ -24,10 +25,10 @@ public class User {
     private String avatar;
     private String role;
 
-    private String status;
+    private Integer status;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedTime;
+    private Date modifiedTime;
 }

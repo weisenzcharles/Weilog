@@ -183,7 +183,7 @@
         tocDropdown          : false,
         tocContainer         : "",
         tocStartLevel        : 1,              // Said from H1 to create ToC
-        htmlDecode           : false,          // Open the HTML tag identification 
+        htmlDecode           : false,          // Open the HTML term identification
         pageBreak            : true,           // Enable parse page break [========]
         atLink               : true,           // for @link
         emailLink            : true,           // for email address auto link
@@ -208,7 +208,7 @@
                 return editormd.toolbarHandlers.lowercase;
             }
         },
-        toolbarCustomIcons   : {               // using html tag create toolbar icon, unused default &lt;a> tag.
+        toolbarCustomIcons   : {               // using html term create toolbar icon, unused default &lt;a> term.
             lowercase        : "&lt;a href=\"javascript:;\" title=\"Lowercase\" unselectable=\"on\">&lt;i class=\"fa\" name=\"lowercase\" style=\"font-size:24px;margin-top: -10px;\">a&lt;/i>&lt;/a>",
             "ucwords"        : "&lt;a href=\"javascript:;\" title=\"ucwords\" unselectable=\"on\">&lt;i class=\"fa\" name=\"ucwords\" style=\"font-size:20px;margin-top: -3px;\">Aa&lt;/i>&lt;/a>"
         }, 
@@ -3464,9 +3464,9 @@
 
         markedRenderer.tablecell = function(content, flags) {
             var type = (flags.header) ? "th" : "td";
-            var tag  = (flags.align)  ? "&lt;" + type +" style=\"text-align:" + flags.align + "\">" : "&lt;" + type + ">";
+            var term  = (flags.align)  ? "&lt;" + type +" style=\"text-align:" + flags.align + "\">" : "&lt;" + type + ">";
             
-            return tag + this.atLink(this.emoji(content)) + "&lt;/" + type + ">\n";
+            return term + this.atLink(this.emoji(content)) + "&lt;/" + type + ">\n";
         };
 
         markedRenderer.listitem = function(text) {
@@ -3622,7 +3622,7 @@
     
     /**
      * 简单地过滤指定的HTML标签
-     * Filter custom html tags
+     * Filter custom html terms
      * 
      * @param   {String}   html          要过滤HTML
      * @param   {String}   filters       要过滤的标签
@@ -3645,9 +3645,9 @@
 
         for (var i = 0, len = filterTags.length; i &lt; len; i++)
         {
-            var tag = filterTags[i];
+            var term = filterTags[i];
 
-            html = html.replace(new RegExp("\&lt;\s*" + tag + "\s*([^\>]*)\>([^\>]*)\&lt;\s*\/" + tag + "\s*\>", "igm"), "");
+            html = html.replace(new RegExp("\&lt;\s*" + term + "\s*([^\>]*)\>([^\>]*)\&lt;\s*\/" + term + "\s*\>", "igm"), "");
         }
 
         if (typeof attrs !== "undefined")

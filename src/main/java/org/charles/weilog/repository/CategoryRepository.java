@@ -1,6 +1,6 @@
 package org.charles.weilog.repository;
 
-import org.charles.weilog.domain.Category;
+import org.charles.weilog.domain.Taxonomy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *
  * @author Charles
  */
-public interface CategoryRepository extends JpaRepository<Category, Long>, JpaSpecificationExecutor<Category> {
+public interface CategoryRepository extends JpaRepository<Taxonomy, Long>, JpaSpecificationExecutor<Taxonomy> {
 }
