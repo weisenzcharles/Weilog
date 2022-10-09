@@ -15,10 +15,26 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer sortIndex;
 
+    private String authorName;
+
+    private String authorEmail;
+
+    private String authorUrl;
+
+    private String authorIp;
+    // 是否被批准
+    private boolean approved;
+    // 文章 id
+    private long postId;
+    // 父级 id
+    private Long parentId;
+    // 评论内容
+    private String content;
+    // 评论者的 USER AGENT
+    private String userAgent;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedTime;
+    private Date modifiedTime;
 }

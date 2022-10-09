@@ -4,7 +4,7 @@ import org.charles.weilog.domain.Taxonomy;
 
 import java.util.List;
 
-public interface CategoryService {
+public interface TaxonomyService {
     boolean add(Taxonomy tag);
 
     boolean remove(Long id);

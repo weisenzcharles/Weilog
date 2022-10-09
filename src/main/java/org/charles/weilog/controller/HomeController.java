@@ -18,20 +18,19 @@ public class HomeController {
     private TagService tagService;
 
     @GetMapping("/")
-    public String toIndexPage(@RequestParam(name = "pageNum",defaultValue = "1",required = false)
-                                      Integer pageNum, Model model, HttpSession session){
+    public String toIndexPage(@RequestParam(name = "pageSize", defaultValue = "1", required = false) Integer pageSize, Model model, HttpSession session) {
 
 //        List<Type> types = typeService.listTypeTop(7);
-        List<Tag> tags = tagService.query(1,10);
+        List<Tag> tags = tagService.query(1, 10);
         //User user = (User)session.getAttribute("user");
-//        PageInfo<Blog> blogPageInfo = blogService.listBlogByBlogWithTypeWithUser(pageNum, 5,null);
+//        PageInfo<Blog> blogPageInfo = blogService.listBlogByBlogWithTypeWithUser(pageSize, 5,null);
 
         //List<Blog> blogList = blogPageInfo.getList();
         //
         //blogPageInfo.setList(blogList);
 
 //        model.addAttribute("types",types);
-        model.addAttribute("tags",tags);
+        model.addAttribute("tags", tags);
 //        model.addAttribute("blogPageInfo",blogPageInfo);
 //        System.out.println(blogPageInfo);
         return "index";

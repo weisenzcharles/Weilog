@@ -1,6 +1,6 @@
 package org.charles.weilog.service.impl;
 
-import org.charles.weilog.domain.Metadata;
+import org.charles.weilog.domain.PostMeta;
 import org.charles.weilog.service.MetadataService;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class MetadataServiceImpl implements MetadataService {
     @Override
-    public boolean add(Metadata tag) {
+    public boolean add(PostMeta tag) {
         return false;
     }
 
@@ -19,22 +19,22 @@ public class MetadataServiceImpl implements MetadataService {
     }
 
     @Override
-    public boolean update(Metadata tag) {
+    public boolean update(PostMeta tag) {
         return false;
     }
 
     @Override
-    public Metadata query(Long id) {
+    public PostMeta query(Long id) {
         return null;
     }
 
     @Override
-    public List<Metadata> query(String title, int pageIndex, int pageSize) {
+    public List<PostMeta> query(String title, int pageIndex, int pageSize) {
         return null;
     }
 
     @Override
-    public List<Metadata> query(int pageIndex, int pageSize) {
+    public List<PostMeta> query(int pageIndex, int pageSize) {
         return null;
     }
 }

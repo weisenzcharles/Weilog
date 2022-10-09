@@ -16,4 +16,7 @@ public interface UserService {
     List<User> query(String title, int pageIndex, int pageSize);
 
     List<User> query(int pageIndex, int pageSize);
+
+    User login(String username, String password);
+
 }

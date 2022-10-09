@@ -1,13 +1,13 @@
 package org.charles.weilog.service.impl;
 
 import org.charles.weilog.domain.Taxonomy;
-import org.charles.weilog.service.CategoryService;
+import org.charles.weilog.service.TaxonomyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class TaxonomyServiceImpl implements TaxonomyService {
     @Override
     public boolean add(Taxonomy tag) {
         return false;

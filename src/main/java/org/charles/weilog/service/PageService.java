@@ -1,7 +1,5 @@
 package org.charles.weilog.service;
 
-import org.charles.weilog.domain.Page;
-
 import java.util.List;
 
 public interface PageService {

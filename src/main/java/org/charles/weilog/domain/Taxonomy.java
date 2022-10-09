@@ -5,36 +5,31 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 
-/**
- * 用户。
- */
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "taxonomy")
+public class Taxonomy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // 用户名称
-    private String username;
-    // 用户密码
-    private String password;
-    // 用户昵称
-    private String nickname;
-    private String email;
-    private String phone;
+    private String name;
     private String description;
-    private String avatar;
-    private Integer role;
-    private Boolean status;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registeredTime;
+    // 别名
+    private String alias;
+    // 类型
+    private Integer type;
+    // 父级 Id
+    private Long parentId;
+    // 统计数量
+    private Integer count;
+    private String slug;
+    private Integer sortOrder;
+    private Boolean deleted;
+    private Boolean enabled;
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdTime;
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,20 +1,20 @@
 package org.charles.weilog.service;
 
-import org.charles.weilog.domain.Metadata;
+import org.charles.weilog.domain.PostMeta;
 
 import java.util.List;
 
 public interface MetadataService {
 
-    boolean add(Metadata tag);
+    boolean add(PostMeta tag);
 
     boolean remove(Long id);
 
-    boolean update(Metadata tag);
+    boolean update(PostMeta tag);
 
-    Metadata query(Long id);
+    PostMeta query(Long id);
 
-    List<Metadata> query(String title, int pageIndex, int pageSize);
+    List<PostMeta> query(String title, int pageIndex, int pageSize);
 
-    List<Metadata> query(int pageIndex, int pageSize);
+    List<PostMeta> query(int pageIndex, int pageSize);
 }

@@ -10,26 +10,16 @@ import javax.persistence.*;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-@Table(name = "tags")
-public class Tag {
+@Table(name = "options")
+public class Option {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private String description;
-    // 别名
-    private String alias;
-    // 分类 Id
-    private Long taxonomyId;
-    private String slug;
-
-    private String color;
-
-    private String type;
-
-    private Integer sortIndex;
-
-    private Boolean deleted;
+    private String value;
+    // 自动加载
+    private boolean autoload;
 }

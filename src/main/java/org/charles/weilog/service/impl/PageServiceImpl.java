@@ -1,6 +1,5 @@
 package org.charles.weilog.service.impl;
 
-import org.charles.weilog.domain.Page;
 import org.charles.weilog.service.PageService;
 import org.springframework.stereotype.Service;
 

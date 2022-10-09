@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
     public List<User> query(int pageIndex, int pageSize) {
         return null;
     }
+
+    @Override
+    public User login(String username, String password) {
+        return null;
+    }
 }
