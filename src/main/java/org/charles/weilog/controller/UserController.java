@@ -45,7 +45,7 @@ public class UserController {
     @PostMapping("/logout")
     public String logout() {
         httpSession.removeAttribute("user");
-        return "redirect:/login";
+        return "redirect:/index";
     }
 
 }

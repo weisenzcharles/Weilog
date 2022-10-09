@@ -1,10 +1,11 @@
 package org.charles.weilog.service;
 
 import org.charles.weilog.domain.Tag;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public interface TagService {
 
     boolean add(Tag tag);

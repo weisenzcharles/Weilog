@@ -6,7 +6,9 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户。
@@ -32,6 +34,10 @@ public class User {
     private String avatar;
     private Integer role;
     private Boolean status;
+
+    @OneToMany(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "userId", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+    private List<UserMeta> userMetas = new ArrayList<>();
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date registeredTime;

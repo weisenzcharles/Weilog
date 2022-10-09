@@ -1,15 +1,17 @@
 package org.charles.weilog.service;
 
 import org.charles.weilog.domain.Taxonomy;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface TaxonomyService {
-    boolean add(Taxonomy tag);
+    boolean add(Taxonomy taxonomy);
 
     boolean remove(Long id);
 
-    boolean update(Taxonomy tag);
+    boolean update(Taxonomy taxonomy);
 
     Taxonomy query(Long id);
 

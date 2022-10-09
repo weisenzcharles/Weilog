@@ -1,13 +1,30 @@
 package org.charles.weilog.service.impl;
 
 import org.charles.weilog.domain.PostMeta;
-import org.charles.weilog.service.MetadataService;
+import org.charles.weilog.repository.PostMetaRepository;
+import org.charles.weilog.service.PostMetaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Post meta service.
+ */
 @Service
-public class MetadataServiceImpl implements MetadataService {
+public class PostMetaServiceImpl implements PostMetaService {
+    private final PostMetaRepository postMetaRepository;
+
+    /**
+     * Instantiates a new Post meta service.
+     *
+     * @param postMetaRepository the post meta repository
+     */
+    @Autowired
+    public PostMetaServiceImpl(PostMetaRepository postMetaRepository) {
+        this.postMetaRepository = postMetaRepository;
+    }
+
     @Override
     public boolean add(PostMeta tag) {
         return false;

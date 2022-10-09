@@ -1,9 +1,11 @@
 package org.charles.weilog.service;
 
 import org.charles.weilog.domain.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface UserService {
     boolean add(User tag);
 

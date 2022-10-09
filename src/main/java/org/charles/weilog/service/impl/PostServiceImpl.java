@@ -1,7 +1,9 @@
 package org.charles.weilog.service.impl;
 
 import org.charles.weilog.domain.Post;
+import org.charles.weilog.repository.PostRepository;
 import org.charles.weilog.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -11,8 +13,24 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * The type Post service.
+ */
 @Service
 public class PostServiceImpl implements PostService {
+
+    private final PostRepository postRepository;
+
+    /**
+     * Instantiates a new Post service.
+     *
+     * @param postRepository the post repository
+     */
+    @Autowired
+    public PostServiceImpl(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+
     @Override
     public Page<Post> listPost(Pageable pageable) {
         return new Page<Post>() {
