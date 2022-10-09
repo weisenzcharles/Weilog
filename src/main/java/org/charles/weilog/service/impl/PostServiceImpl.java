@@ -1,17 +1,23 @@
 package org.charles.weilog.service.impl;
 
 import org.charles.weilog.domain.Post;
+import org.charles.weilog.domain.Taxonomy;
 import org.charles.weilog.repository.PostRepository;
 import org.charles.weilog.service.PostService;
+import org.charles.weilog.vo.PostQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+
 
 /**
  * The type Post service.
@@ -33,92 +39,30 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Page<Post> listPost(Pageable pageable) {
-        return new Page<Post>() {
-            @Override
-            public int getTotalPages() {
-                return 0;
-            }
-
-            @Override
-            public long getTotalElements() {
-                return 0;
-            }
-
-            @Override
-            public <U> Page<U> map(Function<? super Post, ? extends U> function) {
-                return null;
-            }
-
-            @Override
-            public int getNumber() {
-                return 0;
-            }
-
-            @Override
-            public int getSize() {
-                return 0;
-            }
-
-            @Override
-            public int getNumberOfElements() {
-                return 0;
-            }
-
-            @Override
-            public List<Post> getContent() {
-                return null;
-            }
-
-            @Override
-            public boolean hasContent() {
-                return false;
-            }
-
-            @Override
-            public Sort getSort() {
-                return null;
-            }
-
-            @Override
-            public boolean isFirst() {
-                return false;
-            }
-
-            @Override
-            public boolean isLast() {
-                return false;
-            }
-
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public boolean hasPrevious() {
-                return false;
-            }
-
-            @Override
-            public Pageable nextPageable() {
-                return null;
-            }
-
-            @Override
-            public Pageable previousPageable() {
-                return null;
-            }
-
-            @Override
-            public Iterator<Post> iterator() {
-                return null;
-            }
-        };
+        return postRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Post> listPost(Pageable pageable, String query) {
-        return null;
+    public Page<Post> listPost(Pageable pageable, Post blog) {
+        return postRepository.findb;
+    }
+
+    @Override
+    public Page<Post> listPost(Pageable pageable, PostQuery postQuery) {
+        return postRepository.findAll((Specification<Post>) (root, query, criteriaBuilder) -> {
+            List<Predicate> Predicates = new ArrayList<>();
+            if (!"".equals(postQuery.getTitle()) && postQuery.getTitle() != null) {
+                Predicates.add(criteriaBuilder.like(root.<String>get("title"), "%" + postQuery.getTitle() + "%"));
+            }
+            if (postQuery.getTaxonomyId() != null) {
+                Predicates.add(criteriaBuilder.equal(root.<Taxonomy>get("type").get("id"), postQuery.getTaxonomyId()));
+            }
+            if (postQuery.isRecommend()) {
+                Predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), postQuery.isRecommend()));
+            }
+            query.where(Predicates.toArray(new Predicate[Predicates.size()]));
+            return null;
+        }, pageable);
     }
 
     @Override
