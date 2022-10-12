@@ -1276,8 +1276,8 @@
 
     showSelection: function(drawn) {
       var cm = this.cm, display = cm.display;
-      removeChildrenAndAdd(display.cursorDiv, drawn.cursors);
-      removeChildrenAndAdd(display.selectionDiv, drawn.selection);
+      removeChildrenAndinsert(display.cursorDiv, drawn.cursors);
+      removeChildrenAndinsert(display.selectionDiv, drawn.selection);
       if (drawn.teTop != null) {
         this.wrapper.style.top = drawn.teTop + "px";
         this.wrapper.style.left = drawn.teLeft + "px";
@@ -1630,8 +1630,8 @@
     },
 
     showMultipleSelections: function(info) {
-      removeChildrenAndAdd(this.cm.display.cursorDiv, info.cursors);
-      removeChildrenAndAdd(this.cm.display.selectionDiv, info.selection);
+      removeChildrenAndinsert(this.cm.display.cursorDiv, info.cursors);
+      removeChildrenAndinsert(this.cm.display.selectionDiv, info.selection);
     },
 
     rememberSelection: function() {
@@ -2241,7 +2241,7 @@
     var padding = paddingH(cm.display), leftSide = padding.left;
     var rightSide = Math.max(display.sizerWidth, displayWidth(cm) - display.sizer.offsetLeft) - padding.right;
 
-    function add(left, top, width, bottom) {
+    function insert(left, top, width, bottom) {
       if (top < 0) top = 0;
       top = Math.round(top);
       bottom = Math.round(bottom);
@@ -2271,9 +2271,9 @@
         }
         if (fromArg == null && from == 0) left = leftSide;
         if (rightPos.top - leftPos.top > 3) { // Different lines, draw top part
-          add(left, leftPos.top, null, leftPos.bottom);
+          insert(left, leftPos.top, null, leftPos.bottom);
           left = leftSide;
-          if (leftPos.bottom < rightPos.top) add(left, leftPos.bottom, null, rightPos.top);
+          if (leftPos.bottom < rightPos.top) insert(left, leftPos.bottom, null, rightPos.top);
         }
         if (toArg == null && to == lineLen) right = rightSide;
         if (!start || leftPos.top < start.top || leftPos.top == start.top && leftPos.left < start.left)
@@ -2281,7 +2281,7 @@
         if (!end || rightPos.bottom > end.bottom || rightPos.bottom == end.bottom && rightPos.right > end.right)
           end = rightPos;
         if (left < leftSide + 1) left = leftSide;
-        add(left, rightPos.top, right - left, rightPos.bottom);
+        insert(left, rightPos.top, right - left, rightPos.bottom);
       });
       return {start: start, end: end};
     }
@@ -2296,14 +2296,14 @@
       var rightStart = drawForLine(sTo.line, singleVLine ? 0 : null, sTo.ch).start;
       if (singleVLine) {
         if (leftEnd.top < rightStart.top - 2) {
-          add(leftEnd.right, leftEnd.top, null, leftEnd.bottom);
-          add(leftSide, rightStart.top, rightStart.left, rightStart.bottom);
+          insert(leftEnd.right, leftEnd.top, null, leftEnd.bottom);
+          insert(leftSide, rightStart.top, rightStart.left, rightStart.bottom);
         } else {
-          add(leftEnd.right, leftEnd.top, rightStart.left - leftEnd.right, leftEnd.bottom);
+          insert(leftEnd.right, leftEnd.top, rightStart.left - leftEnd.right, leftEnd.bottom);
         }
       }
       if (leftEnd.bottom < rightStart.top)
-        add(leftSide, leftEnd.bottom, null, rightStart.top);
+        insert(leftSide, leftEnd.bottom, null, rightStart.top);
     }
 
     output.appendChild(fragment);
@@ -2411,7 +2411,7 @@
   function paddingVert(display) {return display.mover.offsetHeight - display.lineSpace.offsetHeight;}
   function paddingH(display) {
     if (display.cachedPaddingH) return display.cachedPaddingH;
-    var e = removeChildrenAndAdd(display.measure, elt("pre", "x"));
+    var e = removeChildrenAndinsert(display.measure, elt("pre", "x"));
     var style = window.getComputedStyle ? window.getComputedStyle(e) : e.currentStyle;
     var data = {left: parseInt(style.paddingLeft), right: parseInt(style.paddingRight)};
     if (!isNaN(data.left) && !isNaN(data.right)) display.cachedPaddingH = data;
@@ -2471,7 +2471,7 @@
     view.lineN = lineN;
     var built = view.built = buildLineContent(cm, view);
     view.text = built.pre;
-    removeChildrenAndAdd(cm.display.lineMeasure, built.pre);
+    removeChildrenAndinsert(cm.display.lineMeasure, built.pre);
     return view;
   }
 
@@ -2850,7 +2850,7 @@
       }
       measureText.appendChild(document.createTextNode("x"));
     }
-    removeChildrenAndAdd(display.measure, measureText);
+    removeChildrenAndinsert(display.measure, measureText);
     var height = measureText.offsetHeight / 50;
     if (height > 3) display.cachedTextHeight = height;
     removeChildren(display.measure);
@@ -2862,7 +2862,7 @@
     if (display.cachedCharWidth != null) return display.cachedCharWidth;
     var anchor = elt("span", "xxxxxxxxxx");
     var pre = elt("pre", [anchor]);
-    removeChildrenAndAdd(display.measure, pre);
+    removeChildrenAndinsert(display.measure, pre);
     var rect = anchor.getBoundingClientRect(), width = (rect.right - rect.left) / 10;
     if (width > 2) display.cachedCharWidth = width;
     return width || 10;
@@ -6476,7 +6476,7 @@
         parentStyle += "margin-left: -" + widget.cm.display.gutters.offsetWidth + "px;";
       if (widget.noHScroll)
         parentStyle += "width: " + widget.cm.display.wrapper.clientWidth + "px;";
-      removeChildrenAndAdd(widget.cm.display.measure, elt("div", [widget.node], null, parentStyle));
+      removeChildrenAndinsert(widget.cm.display.measure, elt("div", [widget.node], null, parentStyle));
     }
     return widget.height = widget.node.offsetHeight;
   }
@@ -8166,7 +8166,7 @@
     return e;
   }
 
-  function removeChildrenAndAdd(parent, e) {
+  function removeChildrenAndinsert(parent, e) {
     return removeChildren(parent).appendChild(e);
   }
 
@@ -8260,7 +8260,7 @@
   function zeroWidthElement(measure) {
     if (zwspSupported == null) {
       var test = elt("span", "\u200b");
-      removeChildrenAndAdd(measure, elt("span", [test, document.createTextNode("x")]));
+      removeChildrenAndinsert(measure, elt("span", [test, document.createTextNode("x")]));
       if (measure.firstChild.offsetHeight != 0)
         zwspSupported = test.offsetWidth <= 1 && test.offsetHeight > 2 && !(ie && ie_version < 8);
     }
@@ -8274,7 +8274,7 @@
   var badBidiRects;
   function hasBadBidiRects(measure) {
     if (badBidiRects != null) return badBidiRects;
-    var txt = removeChildrenAndAdd(measure, document.createTextNode("A\u062eA"));
+    var txt = removeChildrenAndinsert(measure, document.createTextNode("A\u062eA"));
     var r0 = range(txt, 0, 1).getBoundingClientRect();
     if (!r0 || r0.left == r0.right) return false; // Safari returns null in some cases (#2780)
     var r1 = range(txt, 1, 2).getBoundingClientRect();
@@ -8321,7 +8321,7 @@
   var badZoomedRects = null;
   function hasBadZoomedRects(measure) {
     if (badZoomedRects != null) return badZoomedRects;
-    var node = removeChildrenAndAdd(measure, elt("span", "x"));
+    var node = removeChildrenAndinsert(measure, elt("span", "x"));
     var normal = node.getBoundingClientRect();
     var fromRange = range(node, 0, 1).getBoundingClientRect();
     return badZoomedRects = Math.abs(normal.left - fromRange.left) > 1;

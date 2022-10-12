@@ -20,8 +20,10 @@ spring:
     database-platform: org.hibernate.dialect.MySQL57Dialect # 配置使用 MySQL 5.7 版本
   thymeleaf:
     mode: HTML  # 配置使用 HTML 模式
+
 logging:
   level:
-    root: info  # 配置日志级别
+    ROOT: WARN
+    org.springframework: INFO
     org.charles.weilog: debug # 配置项目日志级别
-    file: logs/weilog.log # 配置日志文件
+#    file: logs/weilog.log # 配置日志文件

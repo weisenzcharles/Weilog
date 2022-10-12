@@ -7,11 +7,11 @@ import java.util.List;
 
 @Service
 public interface OptionService {
-    boolean add(Option option);
+    Option insert(Option entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(Option option);
+    Option update(Option entity);
 
     Option query(Long id);
 

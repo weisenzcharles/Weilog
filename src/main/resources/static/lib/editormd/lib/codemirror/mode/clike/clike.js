@@ -258,13 +258,13 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
   function def(mimes, mode) {
     if (typeof mimes == "string") mimes = [mimes];
     var words = [];
-    function add(obj) {
+    function insert(obj) {
       if (obj) for (var prop in obj) if (obj.hasOwnProperty(prop))
         words.push(prop);
     }
-    add(mode.keywords);
-    add(mode.builtin);
-    add(mode.atoms);
+    insert(mode.keywords);
+    insert(mode.builtin);
+    insert(mode.atoms);
     if (words.length) {
       mode.helperType = mimes[0];
       CodeMirror.registerHelper("hintWords", mimes[0], words);

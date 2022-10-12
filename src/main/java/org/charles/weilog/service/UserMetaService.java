@@ -8,11 +8,11 @@ import java.util.List;
 @Service
 public interface UserMetaService {
 
-    boolean add(UserMeta userMeta);
+    UserMeta insert(UserMeta entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(UserMeta userMeta);
+    UserMeta update(UserMeta entity);
 
     UserMeta query(Long id);
 

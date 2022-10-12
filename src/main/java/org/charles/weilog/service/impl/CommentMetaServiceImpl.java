@@ -19,7 +19,8 @@ public class CommentMetaServiceImpl implements CommentMetaService {
     /**
      * Instantiates a new Comment meta service.
      *
-     * @param commentMetaRepository the comment meta repository
+     * @param commentMetaRepository
+     *         the comment meta repository
      */
     @Autowired
     public CommentMetaServiceImpl(CommentMetaRepository commentMetaRepository) {
@@ -28,18 +29,19 @@ public class CommentMetaServiceImpl implements CommentMetaService {
 
 
     @Override
-    public boolean add(CommentMeta commentMeta) {
-        return false;
+    public CommentMeta insert(CommentMeta entity) {
+        return commentMetaRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        commentMetaRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(CommentMeta commentMeta) {
-        return false;
+    public CommentMeta update(CommentMeta entity) {
+
+        return commentMetaRepository.save(entity);
     }
 
     @Override

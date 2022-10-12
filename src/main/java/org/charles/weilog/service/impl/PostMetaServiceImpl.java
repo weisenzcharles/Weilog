@@ -18,7 +18,8 @@ public class PostMetaServiceImpl implements PostMetaService {
     /**
      * Instantiates a new Post meta service.
      *
-     * @param postMetaRepository the post meta repository
+     * @param postMetaRepository
+     *         the post meta repository
      */
     @Autowired
     public PostMetaServiceImpl(PostMetaRepository postMetaRepository) {
@@ -26,18 +27,19 @@ public class PostMetaServiceImpl implements PostMetaService {
     }
 
     @Override
-    public boolean add(PostMeta tag) {
-        return false;
+    public PostMeta insert(PostMeta entity) {
+        return postMetaRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        postMetaRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(PostMeta tag) {
-        return false;
+    public PostMeta update(PostMeta entity) {
+
+        return postMetaRepository.save(entity);
     }
 
     @Override

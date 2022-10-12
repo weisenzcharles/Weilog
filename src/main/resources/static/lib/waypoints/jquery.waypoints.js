@@ -39,8 +39,8 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     if (Waypoint.offsetAliases[this.options.offset]) {
       this.options.offset = Waypoint.offsetAliases[this.options.offset]
     }
-    this.group.add(this)
-    this.context.add(this)
+    this.group.insert(this)
+    this.context.insert(this)
     allWaypoints[this.key] = this
     keyCounter += 1
   }

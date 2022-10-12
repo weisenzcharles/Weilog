@@ -6,6 +6,7 @@ import org.charles.weilog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -18,26 +19,30 @@ public class UserServiceImpl implements UserService {
     /**
      * Instantiates a new User service.
      *
-     * @param userRepository the user repository
+     * @param userRepository
+     *         the user repository
      */
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     @Override
-    public boolean add(User tag) {
-        return false;
+    public User insert(User entity) {
+        return userRepository.save(entity);
     }
 
+    @Transactional
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        userRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
-    public boolean update(User tag) {
-        return false;
+    public User update(User entity) {
+        return userRepository.save(entity);
     }
 
     @Override

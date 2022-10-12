@@ -19,7 +19,8 @@ public class OptionServiceImpl implements OptionService {
     /**
      * Instantiates a new Option service.
      *
-     * @param optionRepository the option repository
+     * @param optionRepository
+     *         the option repository
      */
     @Autowired
     public OptionServiceImpl(OptionRepository optionRepository) {
@@ -27,18 +28,18 @@ public class OptionServiceImpl implements OptionService {
     }
 
     @Override
-    public boolean add(Option tag) {
-        return false;
+    public Option insert(Option entity) {
+        return optionRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        optionRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Option tag) {
-        return false;
+    public Option update(Option entity) {
+        return optionRepository.save(entity);
     }
 
     @Override

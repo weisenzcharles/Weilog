@@ -99,14 +99,14 @@
 
   function getCompletions(token, context, keywords, options) {
     var found = [], start = token.string, global = options && options.globalScope || window;
-    function maybeAdd(str) {
+    function maybeinsert(str) {
       if (str.lastIndexOf(start, 0) == 0 && !arrayContains(found, str)) found.push(str);
     }
     function gatherCompletions(obj) {
       if (typeof obj == "string") forEach(stringProps, maybeAdd);
       else if (obj instanceof Array) forEach(arrayProps, maybeAdd);
       else if (obj instanceof Function) forEach(funcProps, maybeAdd);
-      for (var name in obj) maybeAdd(name);
+      for (var name in obj) maybeinsert(name);
     }
 
     if (context && context.length) {
@@ -135,8 +135,8 @@
     } else {
       // If not, just look in the global object and any local scope
       // (reading into JS mode internals to get at the local and global variables)
-      for (var v = token.state.localVars; v; v = v.next) maybeAdd(v.name);
-      for (var v = token.state.globalVars; v; v = v.next) maybeAdd(v.name);
+      for (var v = token.state.localVars; v; v = v.next) maybeinsert(v.name);
+      for (var v = token.state.globalVars; v; v = v.next) maybeinsert(v.name);
       if (!options || options.useGlobalScope !== false)
         gatherCompletions(global);
       forEach(keywords, maybeAdd);

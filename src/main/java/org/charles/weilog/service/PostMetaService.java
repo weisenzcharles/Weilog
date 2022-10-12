@@ -8,11 +8,11 @@ import java.util.List;
 
 @Service
 public interface PostMetaService {
-    boolean add(PostMeta postMeta);
+    PostMeta insert(PostMeta entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(PostMeta postMeta);
+    PostMeta update(PostMeta entity);
 
     PostMeta query(Long id);
 

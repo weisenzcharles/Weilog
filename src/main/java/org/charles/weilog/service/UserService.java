@@ -7,11 +7,12 @@ import java.util.List;
 
 @Service
 public interface UserService {
-    boolean add(User tag);
 
-    boolean remove(Long id);
+    User insert(User entity);
 
-    boolean update(User tag);
+    void delete(Long id);
+
+    User update(User entity);
 
     User query(Long id);
 

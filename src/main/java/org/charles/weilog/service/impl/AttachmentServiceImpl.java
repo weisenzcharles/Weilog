@@ -19,7 +19,8 @@ public class AttachmentServiceImpl implements AttachmentService {
     /**
      * Instantiates a new Attachment service.
      *
-     * @param attachmentRepository the attachment repository
+     * @param attachmentRepository
+     *         the attachment repository
      */
     @Autowired
     public AttachmentServiceImpl(AttachmentRepository attachmentRepository) {
@@ -27,18 +28,18 @@ public class AttachmentServiceImpl implements AttachmentService {
     }
 
     @Override
-    public boolean add(Attachment attachment) {
-        return false;
+    public Attachment insert(Attachment entity) {
+        return attachmentRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void remove(Long id) {
+        attachmentRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Attachment attachment) {
-        return false;
+    public Attachment update(Attachment entity) {
+        return attachmentRepository.save(entity);
     }
 
     @Override

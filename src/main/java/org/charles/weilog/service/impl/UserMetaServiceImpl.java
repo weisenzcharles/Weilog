@@ -19,7 +19,8 @@ public class UserMetaServiceImpl implements UserMetaService {
     /**
      * Instantiates a new User meta service.
      *
-     * @param userMetaRepository the user meta repository
+     * @param userMetaRepository
+     *         the user meta repository
      */
     @Autowired
     public UserMetaServiceImpl(UserMetaRepository userMetaRepository) {
@@ -27,18 +28,18 @@ public class UserMetaServiceImpl implements UserMetaService {
     }
 
     @Override
-    public boolean add(UserMeta userMeta) {
-        return false;
+    public UserMeta insert(UserMeta entity) {
+        return userMetaRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        userMetaRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(UserMeta userMeta) {
-        return false;
+    public UserMeta update(UserMeta entity) {
+        return userMetaRepository.save(entity);
     }
 
     @Override

@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -30,7 +30,8 @@ public class PostServiceImpl implements PostService {
     /**
      * Instantiates a new Post service.
      *
-     * @param postRepository the post repository
+     * @param postRepository
+     *         the post repository
      */
     @Autowired
     public PostServiceImpl(PostRepository postRepository) {
@@ -44,7 +45,8 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Page<Post> listPost(Pageable pageable, Post blog) {
-        return postRepository.findb;
+        // return postRepository.findByQuery(pageable,blog);
+        return null;
     }
 
     @Override
@@ -60,38 +62,60 @@ public class PostServiceImpl implements PostService {
             if (postQuery.isRecommend()) {
                 Predicates.add(criteriaBuilder.equal(root.<Boolean>get("recommend"), postQuery.isRecommend()));
             }
-            query.where(Predicates.toArray(new Predicate[Predicates.size()]));
+            query.where(Predicates.toArray(new Predicate[0]));
             return null;
         }, pageable);
     }
 
     @Override
-    public boolean add(Post tag) {
-        return false;
+    public Post findByAlias(String alias) {
+        return postRepository.findByAlias(alias);
+    }
+
+
+    @Override
+    public Post insert(Post entity) {
+        return postRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        postRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Post tag) {
-        return false;
+    public Post update(Post entity) {
+        return postRepository.save(entity);
     }
 
     @Override
-    public Post query(Long id) {
+    public List<Post> findListByYear(String year) {
+        return postRepository.findListByYear(year);
+    }
+
+    @Override
+    public Map<String, List<Post>> archivePosts() {
+        List<String> years = postRepository.findGroupYear();
+        Map<String, List<Post>> map = new HashMap<>();
+        for (String year : years) {
+            map.put(year, postRepository.findListByYear(year));
+        }
+        return map;
+    }
+
+    @Override
+    public Post findById(Long id) {
+        Optional<Post> result = postRepository.findById(id);
+        return result.orElse(null);
+    }
+
+    @Override
+    public List<Post> findByPaging(String title, int pageIndex, int pageSize) {
         return null;
     }
 
     @Override
-    public List<Post> query(String title, int pageIndex, int pageSize) {
-        return null;
-    }
-
-    @Override
-    public List<Post> query(int pageIndex, int pageSize) {
+    public List<Post> findByPaging(int pageIndex, int pageSize) {
         return null;
     }
 }

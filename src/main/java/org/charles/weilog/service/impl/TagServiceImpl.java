@@ -19,7 +19,8 @@ public class TagServiceImpl implements TagService {
     /**
      * Instantiates a new Tag service.
      *
-     * @param tagRepository the tag repository
+     * @param tagRepository
+     *         the tag repository
      */
     @Autowired
     public TagServiceImpl(TagRepository tagRepository) {
@@ -27,18 +28,18 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public boolean add(Tag tag) {
-        return false;
+    public Tag insert(Tag entity) {
+        return tagRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        tagRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Tag tag) {
-        return false;
+    public Tag update(Tag entity) {
+        return tagRepository.save(entity);
     }
 
     @Override

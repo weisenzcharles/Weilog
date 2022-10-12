@@ -8,11 +8,11 @@ import java.util.List;
 
 @Service
 public interface CommentMetaService {
-    boolean add(CommentMeta commentMeta);
+    CommentMeta insert(CommentMeta entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(CommentMeta commentMeta);
+    CommentMeta update(CommentMeta entity);
 
     CommentMeta query(Long id);
 

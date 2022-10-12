@@ -28,7 +28,7 @@
     var spec = CodeMirror.resolveMode("text/css");
 
     var result = [];
-    function add(keywords) {
+    function insert(keywords) {
       for (var name in keywords)
         if (!word || name.lastIndexOf(word, 0) == 0)
           result.push(name);
@@ -36,15 +36,15 @@
 
     var st = inner.state.state;
     if (st == "pseudo" || token.type == "variable-3") {
-      add(pseudoClasses);
+      insert(pseudoClasses);
     } else if (st == "block" || st == "maybeprop") {
-      add(spec.propertyKeywords);
+      insert(spec.propertyKeywords);
     } else if (st == "prop" || st == "parens" || st == "at" || st == "params") {
-      add(spec.valueKeywords);
-      add(spec.colorKeywords);
+      insert(spec.valueKeywords);
+      insert(spec.colorKeywords);
     } else if (st == "media" || st == "media_parens") {
-      add(spec.mediaTypes);
-      add(spec.mediaFeatures);
+      insert(spec.mediaTypes);
+      insert(spec.mediaFeatures);
     }
 
     if (result.length) return {

@@ -7,11 +7,11 @@ import java.util.List;
 
 @Service
 public interface CommentService {
-    boolean add(Comment tag);
+    Comment insert(Comment entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(Comment tag);
+    Comment update(Comment entity);
 
     Comment query(Long id);
 

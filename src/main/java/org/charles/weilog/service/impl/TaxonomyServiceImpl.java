@@ -19,7 +19,8 @@ public class TaxonomyServiceImpl implements TaxonomyService {
     /**
      * Instantiates a new Taxonomy service.
      *
-     * @param taxonomyRepository the taxonomy repository
+     * @param taxonomyRepository
+     *         the taxonomy repository
      */
     @Autowired
     public TaxonomyServiceImpl(TaxonomyRepository taxonomyRepository) {
@@ -27,18 +28,18 @@ public class TaxonomyServiceImpl implements TaxonomyService {
     }
 
     @Override
-    public boolean add(Taxonomy taxonomy) {
-        return false;
+    public Taxonomy insert(Taxonomy entity) {
+        return taxonomyRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        taxonomyRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Taxonomy taxonomy) {
-        return false;
+    public Taxonomy update(Taxonomy entity) {
+        return taxonomyRepository.save(entity);
     }
 
     @Override

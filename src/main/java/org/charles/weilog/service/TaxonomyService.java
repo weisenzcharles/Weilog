@@ -7,11 +7,11 @@ import java.util.List;
 
 @Service
 public interface TaxonomyService {
-    boolean add(Taxonomy taxonomy);
+    Taxonomy insert(Taxonomy entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(Taxonomy taxonomy);
+    Taxonomy update(Taxonomy entity);
 
     Taxonomy query(Long id);
 

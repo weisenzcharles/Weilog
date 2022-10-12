@@ -14,7 +14,7 @@ function callbackFunc() {
   for (var i = 0; i < items.length; i++) {
     if (isElementInViewport(items[i])) {
       if(!items[i].classList.contains("in-view")){
-        items[i].classList.add("in-view");
+        items[i].classList.insert("in-view");
       }
     } else if(items[i].classList.contains("in-view")) {
         items[i].classList.remove("in-view");

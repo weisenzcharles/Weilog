@@ -19,7 +19,8 @@ public class CommentServiceImpl implements CommentService {
     /**
      * Instantiates a new Comment service.
      *
-     * @param commentRepository the comment repository
+     * @param commentRepository
+     *         the comment repository
      */
     @Autowired
     public CommentServiceImpl(CommentRepository commentRepository) {
@@ -27,18 +28,18 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public boolean add(Comment tag) {
-        return false;
+    public Comment insert(Comment entity) {
+        return commentRepository.save(entity);
     }
 
     @Override
-    public boolean remove(Long id) {
-        return false;
+    public void delete(Long id) {
+        commentRepository.deleteById(id);
     }
 
     @Override
-    public boolean update(Comment tag) {
-        return false;
+    public Comment update(Comment entity) {
+        return commentRepository.save(entity);
     }
 
     @Override

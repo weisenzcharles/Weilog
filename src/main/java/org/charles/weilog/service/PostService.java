@@ -4,13 +4,14 @@ import org.charles.weilog.domain.Post;
 import org.charles.weilog.vo.PostQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface PostService {
-//    Page<Post> listPost(Pageable pageable, PostQuery post);
 
     Page<Post> listPost(Pageable pageable);
 
@@ -18,16 +19,21 @@ public interface PostService {
 
     Page<Post> listPost(Pageable pageable, PostQuery postQuery);
 
+    Post findByAlias(String alias);
 
-    boolean add(Post tag);
+    Post insert(Post entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(Post tag);
+    Post update(Post entity);
 
-    Post query(Long id);
+    List<Post> findListByYear(String year);
 
-    List<Post> query(String title, int pageIndex, int pageSize);
+    Map<String,List<Post>> archivePosts();
 
-    List<Post> query(int pageIndex, int pageSize);
+    Post findById(Long id);
+
+    List<Post> findByPaging(String title, int pageIndex, int pageSize);
+
+    List<Post> findByPaging(int pageIndex, int pageSize);
 }

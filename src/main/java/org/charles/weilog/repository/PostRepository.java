@@ -17,10 +17,15 @@ import java.util.List;
  * @author Charles
  */
 public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificationExecutor<Post> {
+
+    @Query("select b from Post b where b.alias = ?1")
+    Post findByAlias(String alias);
+
     /**
      * Find top list.
      *
-     * @param pageable the pageable
+     * @param pageable
+     *         the pageable
      * @return the list
      */
     @Query("select b from Post b where b.recommend = true ")
@@ -29,8 +34,10 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     /**
      * Find by query page.
      *
-     * @param query    the query
-     * @param pageable the pageable
+     * @param query
+     *         the query
+     * @param pageable
+     *         the pageable
      * @return the page
      */
     @Query("select b from Post b where b.title like ?1 and b.content like ?1 ")
@@ -39,7 +46,8 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     /**
      * Update views int.
      *
-     * @param id the id
+     * @param id
+     *         the id
      * @return the int
      */
     @Transactional
@@ -58,9 +66,10 @@ public interface PostRepository extends JpaRepository<Post, Long>, JpaSpecificat
     /**
      * Find by year list.
      *
-     * @param year the year
+     * @param year
+     *         the year
      * @return the list
      */
     @Query("select b from Post b where function('date_format',b.modifiedTime,'%Y') = ?1")
-    List<Post> findByYear(String year);
+    List<Post> findListByYear(String year);
 }

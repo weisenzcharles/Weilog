@@ -8,11 +8,11 @@ import java.util.List;
 @Service
 public interface TagService {
 
-    boolean add(Tag tag);
+    Tag insert(Tag entity);
 
-    boolean remove(Long id);
+    void delete(Long id);
 
-    boolean update(Tag tag);
+    Tag update(Tag entity);
 
     Tag query(Long id);
 

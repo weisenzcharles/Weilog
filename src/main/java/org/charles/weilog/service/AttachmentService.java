@@ -8,11 +8,11 @@ import java.util.List;
 
 @Service
 public interface AttachmentService {
-    boolean add(Attachment attachment);
+    Attachment insert(Attachment entity);
 
-    boolean remove(Long id);
+    void remove(Long id);
 
-    boolean update(Attachment attachment);
+    Attachment update(Attachment entity);
 
     Attachment query(Long id);
 
